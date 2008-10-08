@@ -1,0 +1,12 @@
+//
+// Prefix header for all source files of the 'Feeds' target in the 'Feeds' project.
+//
+
+#ifdef __OBJC__
+#import <Foundation/Foundation.h>
+#endif
+
+#import "FDConfig.h"
+#import "FDExceptions.h"
+
+#define FD_SETTER( name, member, type ) - (void) set##name:(type)value { [member release]; member = [value retain]; }
