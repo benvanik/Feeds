@@ -17,4 +17,16 @@
  */
 - (id) initWithLabel:(NSString*)label;
 
+/**
+ * Creates and returns a category with the contents of the given property list.
+ * @param plist A serialized category in property list representation.
+ */
++ (FDCategory*) categoryWithContentsOfPropertyList:(NSDictionary*)plist;
+
+/**
+ * Serialize the object to a property list.
+ * @return The object in property list format.
+ */
+- (NSDictionary*) propertyList;
+
 @end

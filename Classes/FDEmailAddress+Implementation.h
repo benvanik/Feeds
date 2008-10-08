@@ -24,4 +24,16 @@
  */
 - (id) initWithAddress:(NSString*)address andName:(NSString*)name;
 
+/**
+ * Creates and returns an e-mail address with the contents of the given property list.
+ * @param plist A serialized e-mail address in property list representation.
+ */
++ (FDEmailAddress*) emailAddresWithContentsOfPropertyList:(NSDictionary*)plist;
+
+/**
+ * Serialize the object to a property list.
+ * @return The object in property list format.
+ */
+- (NSDictionary*) propertyList;
+
 @end

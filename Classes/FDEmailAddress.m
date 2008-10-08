@@ -34,12 +34,12 @@
             [self release];
             return nil;
         }
-        address = [_address copy];
+        address = [_address retain];
         
         if( ( _name != nil ) && ( [_name length] == 0 ) )
             name = nil;
         else
-            name = [_name copy];
+            name = [_name retain];
     }
     return self;
 }
@@ -62,6 +62,22 @@
         return [NSString stringWithFormat:@"%@ (%@)", address, name];
     else
         return address;
+}
+
+#pragma mark -
+#pragma mark Serialization
+
++ (FDEmailAddress*) emailAddresWithContentsOfPropertyList:(NSDictionary*)plist
+{
+    if( plist == nil )
+        return nil;
+    FDEmailAddress* emailAddress = [[FDEmailAddress alloc] initWithAddress:[plist objectForKey:@"address"] andName:[plist objectForKey:@"name"]];
+    return [emailAddress autorelease];
+}
+
+- (NSDictionary*) propertyList
+{
+    return [NSDictionary dictionaryWithObjectsAndKeys:name, @"name", address, @"address", nil];
 }
 
 @end

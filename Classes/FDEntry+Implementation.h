@@ -21,4 +21,16 @@
 - (void) setSource:(FDTitledURL*)value;
 - (void) setEnclosure:(FDEnclosure*)value;
 
+/**
+ * Creates and returns an entry with the contents of the given property list.
+ * @param plist A serialized entry in property list representation.
+ */
++ (FDEntry*) entryWithContentsOfPropertyList:(NSDictionary*)plist;
+
+/**
+ * Serialize the object to a property list.
+ * @return The object in property list format.
+ */
+- (NSDictionary*) propertyList;
+
 @end

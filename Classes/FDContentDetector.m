@@ -93,12 +93,12 @@
     [parser abortParsing];
 }
 
-- (void) parser:(NSXMLParser*)parser parseErrorOccurred:(NSError*)parseError
-{
-    // Ignore our abort error
-    if( ( [parseError domain] == NSXMLParserErrorDomain ) && ( [parseError code] == 1 ) )
-        return;
-    NSLog( @"FDContentDetector: Error %i, Description: %@, Line: %i, Column: %i", [parseError code], [[parser parserError] localizedDescription], [parser lineNumber], [parser columnNumber] );
-}
+//- (void) parser:(NSXMLParser*)parser parseErrorOccurred:(NSError*)parseError
+//{
+//    // Ignore our abort error
+//    if( ( [parseError domain] == NSXMLParserErrorDomain ) && ( [parseError code] == 1 ) )
+//        return;
+//    NSLog( @"FDContentDetector: Error %i, Description: %@, Line: %i, Column: %i", [parseError code], [[parser parserError] localizedDescription], [parser lineNumber], [parser columnNumber] );
+//}
 
 @end

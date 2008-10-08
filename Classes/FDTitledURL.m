@@ -37,7 +37,7 @@
         if( ( _title != nil ) && ( [_title length] == 0 ) )
             title = nil;
         else
-            title = [_title copy];
+            title = [_title retain];
     }
     return self;
 }
@@ -58,6 +58,22 @@
         return [NSString stringWithFormat:@"%@ (%@)", [self absoluteString], title];
     else
         return [self absoluteString];
+}
+
+#pragma mark -
+#pragma mark Serialization
+
++ (FDTitledURL*) titledURLWithContentsOfPropertyList:(NSDictionary*)plist
+{
+    if( plist == nil )
+        return nil;
+    FDTitledURL* url = [[FDTitledURL alloc] initWithURL:[NSURL URLWithString:[plist objectForKey:@"url"]] andTitle:[plist objectForKey:@"title"]];
+    return [url autorelease];
+}
+
+- (NSDictionary*) propertyList
+{
+    return [NSDictionary dictionaryWithObjectsAndKeys:title, @"title", [self absoluteString], @"url", nil];
 }
 
 @end

@@ -75,4 +75,25 @@ FD_SETTER( Title,       title,      NSString*       );
 FD_SETTER( URL,         url,        NSURL*          );
 FD_SETTER( Link,        link,       NSURL*          );
 
+#pragma mark -
+#pragma mark Serialization
+
++ (FDImage*) imageWithContentsOfPropertyList:(NSDictionary*)plist
+{
+    if( plist == nil )
+        return nil;
+    FDImage* image = [[FDImage alloc] init];
+    [image setTitle:[plist objectForKey:@"title"]];
+    if( [plist objectForKey:@"url"] != nil )
+        [image setURL:[NSURL URLWithString:[plist objectForKey:@"url"]]];
+    if( [plist objectForKey:@"link"] != nil )
+        [image setLink:[NSURL URLWithString:[plist objectForKey:@"link"]]];
+    return [image autorelease];
+}
+
+- (NSDictionary*) propertyList
+{
+    return [NSDictionary dictionaryWithObjectsAndKeys:title, @"title", [url absoluteString], @"url", [link absoluteString], @"link", nil];
+}
+
 @end

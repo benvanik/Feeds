@@ -28,7 +28,7 @@
             [self release];
             return nil;
         }
-        label = [_label copy];
+        label = [_label retain];
     }
     return self;
 }
@@ -54,6 +54,22 @@
 - (NSArray*) labelList
 {
     return [label pathComponents];
+}
+
+#pragma mark -
+#pragma mark Serialization
+
++ (FDCategory*) categoryWithContentsOfPropertyList:(NSDictionary*)plist
+{
+    if( plist == nil )
+        return nil;
+    FDCategory* category = [[FDCategory alloc] initWithLabel:[plist objectForKey:@"label"]];
+    return [category autorelease];
+}
+
+- (NSDictionary*) propertyList
+{
+    return [NSDictionary dictionaryWithObjectsAndKeys:label, @"label", nil];
 }
 
 @end

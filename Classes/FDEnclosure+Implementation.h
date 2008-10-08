@@ -19,4 +19,16 @@
  */
 - (id) initWithURL:(NSURL*)url withMimeType:(NSString*)mimeType andLength:(NSUInteger)length;
 
+/**
+ * Creates and returns an enclosure with the contents of the given property list.
+ * @param plist A serialized enclosure in property list representation.
+ */
++ (FDEnclosure*) enclosureWithContentsOfPropertyList:(NSDictionary*)plist;
+
+/**
+ * Serialize the object to a property list.
+ * @return The object in property list format.
+ */
+- (NSDictionary*) propertyList;
+
 @end

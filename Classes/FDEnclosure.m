@@ -43,8 +43,8 @@
             return nil;
         }
         
-        url = [_url copy];
-        mimeType = [_mimeType copy];
+        url = [_url retain];
+        mimeType = [_mimeType retain];
         length = _length;
     }
     return self;
@@ -65,6 +65,24 @@
 - (NSString*) description
 {
     return [NSString stringWithFormat:@"%@ (%@)", [url absoluteString], mimeType];
+}
+
+#pragma mark -
+#pragma mark Serialization
+
++ (FDEnclosure*) enclosureWithContentsOfPropertyList:(NSDictionary*)plist
+{
+    if( plist == nil )
+        return nil;
+    FDEnclosure* enclosure = [[FDEnclosure alloc] initWithURL:[NSURL URLWithString:[plist objectForKey:@"url"]]
+                                                 withMimeType:[plist objectForKey:@"mimeType"]
+                                                    andLength:[[plist objectForKey:@"length"] unsignedIntegerValue]];
+    return [enclosure autorelease];
+}
+
+- (NSDictionary*) propertyList
+{
+    return [NSDictionary dictionaryWithObjectsAndKeys:[url absoluteString], @"url", mimeType, @"mimeType", [NSNumber numberWithUnsignedInteger:length], @"length", nil];
 }
 
 @end

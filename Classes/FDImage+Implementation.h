@@ -23,4 +23,17 @@
 - (void) setURL:(NSURL*)value;
 - (void) setLink:(NSURL*)link;
 
+/**
+ * Creates and returns an image with the contents of the given property list.
+ * @param plist A serialized image in property list representation.
+ */
++ (FDImage*) imageWithContentsOfPropertyList:(NSDictionary*)plist;
+
+/**
+ * Serialize the object to a property list.
+ * @return The object in property list format.
+ */
+- (NSDictionary*) propertyList;
+
+
 @end

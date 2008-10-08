@@ -76,4 +76,23 @@
  */
 + (FDFeed*) feedWithData:(NSData*)data;
 
+/**
+ * Merges the unique contents of the given feed into this feed.
+ * @param otherFeed A feed that may contain new items.
+ * @return YES if new items were added.
+ */
+- (BOOL) addNewItemsFromFeed:(FDFeed*)otherFeed;
+
+/**
+ * Creates and returns a feed with the contents of the given property list.
+ * @param plist A serialized feed in property list representation.
+ */
++ (FDFeed*) feedWithContentsOfPropertyList:(NSDictionary*)plist;
+
+/**
+ * Convert the feed to a property list.
+ * @return The feed in property list representation.
+ */
+- (NSDictionary*) propertyList;
+
 @end

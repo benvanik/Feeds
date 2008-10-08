@@ -83,6 +83,8 @@
 		90CCE3F80E9C9E0700B51736 /* ContentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CCE3F70E9C9E0700B51736 /* ContentTests.m */; };
 		90CCE43F0E9CA04000B51736 /* RSS2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CCE43E0E9CA04000B51736 /* RSS2Tests.m */; };
 		90CCE4420E9CA04900B51736 /* AtomTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CCE4410E9CA04900B51736 /* AtomTests.m */; };
+		90CCE8730E9D468400B51736 /* SerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CCE8720E9D468400B51736 /* SerializationTests.m */; };
+		90CCE9170E9D50B800B51736 /* MergeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CCE9160E9D50B800B51736 /* MergeTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,7 +92,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216 /* Feeds */;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = Feeds;
 		};
 /* End PBXContainerItemProxy section */
@@ -134,7 +136,7 @@
 		90CCE1BF0E9C659200B51736 /* FDTitledURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDTitledURL.h; path = Classes/FDTitledURL.h; sourceTree = "<group>"; };
 		90CCE1C00E9C659200B51736 /* FDTitledURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDTitledURL.m; path = Classes/FDTitledURL.m; sourceTree = "<group>"; };
 		90CCE1C60E9C65A000B51736 /* FDTitledURL+Implementation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "FDTitledURL+Implementation.h"; path = "Classes/FDTitledURL+Implementation.h"; sourceTree = "<group>"; };
-		90CCE25A0E9C6E1100B51736 /* FeedsTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = FeedsTest.octest; path = build/Debug/FeedsTest.octest; sourceTree = "<group>"; };
+		90CCE25A0E9C6E1100B51736 /* FeedsTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeedsTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		90CCE25B0E9C6E1100B51736 /* FeedsTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FeedsTest-Info.plist"; sourceTree = "<group>"; };
 		90CCE2600E9C6E1D00B51736 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		90CCE28F0E9C6F5900B51736 /* ModelTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ModelTests.h; path = Tests/ModelTests.h; sourceTree = "<group>"; };
@@ -150,6 +152,10 @@
 		90CCE43E0E9CA04000B51736 /* RSS2Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSS2Tests.m; path = Tests/RSS2Tests.m; sourceTree = "<group>"; };
 		90CCE4400E9CA04900B51736 /* AtomTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AtomTests.h; path = Tests/AtomTests.h; sourceTree = "<group>"; };
 		90CCE4410E9CA04900B51736 /* AtomTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AtomTests.m; path = Tests/AtomTests.m; sourceTree = "<group>"; };
+		90CCE8710E9D468400B51736 /* SerializationTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SerializationTests.h; path = Tests/SerializationTests.h; sourceTree = "<group>"; };
+		90CCE8720E9D468400B51736 /* SerializationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SerializationTests.m; path = Tests/SerializationTests.m; sourceTree = "<group>"; };
+		90CCE9150E9D50B800B51736 /* MergeTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MergeTests.h; path = Tests/MergeTests.h; sourceTree = "<group>"; };
+		90CCE9160E9D50B800B51736 /* MergeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MergeTests.m; path = Tests/MergeTests.m; sourceTree = "<group>"; };
 		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -313,6 +319,10 @@
 				90CCE4410E9CA04900B51736 /* AtomTests.m */,
 				90CCE43D0E9CA04000B51736 /* RSS2Tests.h */,
 				90CCE43E0E9CA04000B51736 /* RSS2Tests.m */,
+				90CCE8710E9D468400B51736 /* SerializationTests.h */,
+				90CCE8720E9D468400B51736 /* SerializationTests.m */,
+				90CCE9150E9D50B800B51736 /* MergeTests.h */,
+				90CCE9160E9D50B800B51736 /* MergeTests.m */,
 			);
 			name = "Test Cases";
 			sourceTree = "<group>";
@@ -550,6 +560,8 @@
 				90CCE3F80E9C9E0700B51736 /* ContentTests.m in Sources */,
 				90CCE43F0E9CA04000B51736 /* RSS2Tests.m in Sources */,
 				90CCE4420E9CA04900B51736 /* AtomTests.m in Sources */,
+				90CCE8730E9D468400B51736 /* SerializationTests.m in Sources */,
+				90CCE9170E9D50B800B51736 /* MergeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
