@@ -16,3 +16,7 @@
 #import "FDEmailAddress.h"
 #import "FDTitledURL.h"
 #import "FDImage.h"
+
+#import "FDFeedStore.h"
+#import "FDFeedStoreDelegate.h"
+#import "FDFeedInfo.h"

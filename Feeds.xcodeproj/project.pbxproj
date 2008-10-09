@@ -85,6 +85,29 @@
 		90CCE4420E9CA04900B51736 /* AtomTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CCE4410E9CA04900B51736 /* AtomTests.m */; };
 		90CCE8730E9D468400B51736 /* SerializationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CCE8720E9D468400B51736 /* SerializationTests.m */; };
 		90CCE9170E9D50B800B51736 /* MergeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CCE9160E9D50B800B51736 /* MergeTests.m */; };
+		90CCE9650E9D60B000B51736 /* FDFeedStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 90CCE9630E9D60B000B51736 /* FDFeedStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		90CCE9660E9D60B000B51736 /* FDFeedStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CCE9640E9D60B000B51736 /* FDFeedStore.m */; };
+		90CCE9670E9D60B000B51736 /* FDFeedStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 90CCE9630E9D60B000B51736 /* FDFeedStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		90CCE9680E9D60B000B51736 /* FDFeedStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CCE9640E9D60B000B51736 /* FDFeedStore.m */; };
+		90CCE96B0E9D60B800B51736 /* FDFeedInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 90CCE9690E9D60B800B51736 /* FDFeedInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		90CCE96C0E9D60B800B51736 /* FDFeedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CCE96A0E9D60B800B51736 /* FDFeedInfo.m */; };
+		90CCE96D0E9D60B800B51736 /* FDFeedInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 90CCE9690E9D60B800B51736 /* FDFeedInfo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		90CCE96E0E9D60B800B51736 /* FDFeedInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CCE96A0E9D60B800B51736 /* FDFeedInfo.m */; };
+		90CCE9710E9D60EE00B51736 /* FDFeedStoreDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 90CCE96F0E9D60EE00B51736 /* FDFeedStoreDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		90CCE9730E9D60EE00B51736 /* FDFeedStoreDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 90CCE96F0E9D60EE00B51736 /* FDFeedStoreDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		90CCE9A00E9D653F00B51736 /* FDFeedStore+Implementation.h in Headers */ = {isa = PBXBuildFile; fileRef = 90CCE99E0E9D653F00B51736 /* FDFeedStore+Implementation.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		90CCE9A20E9D653F00B51736 /* FDFeedStore+Implementation.h in Headers */ = {isa = PBXBuildFile; fileRef = 90CCE99E0E9D653F00B51736 /* FDFeedStore+Implementation.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		90CCE9A60E9D654C00B51736 /* FDFeedInfo+Implementation.h in Headers */ = {isa = PBXBuildFile; fileRef = 90CCE9A40E9D654C00B51736 /* FDFeedInfo+Implementation.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		90CCE9A80E9D654C00B51736 /* FDFeedInfo+Implementation.h in Headers */ = {isa = PBXBuildFile; fileRef = 90CCE9A40E9D654C00B51736 /* FDFeedInfo+Implementation.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		90CCE9E60E9D76C600B51736 /* StoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CCE9E50E9D76C600B51736 /* StoreTests.m */; };
+		90CCEA350E9DB0B500B51736 /* NSData+CRC32.h in Headers */ = {isa = PBXBuildFile; fileRef = 90CCEA330E9DB0B500B51736 /* NSData+CRC32.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		90CCEA360E9DB0B500B51736 /* NSData+CRC32.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CCEA340E9DB0B500B51736 /* NSData+CRC32.m */; };
+		90CCEA370E9DB0B500B51736 /* NSData+CRC32.h in Headers */ = {isa = PBXBuildFile; fileRef = 90CCEA330E9DB0B500B51736 /* NSData+CRC32.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		90CCEA380E9DB0B500B51736 /* NSData+CRC32.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CCEA340E9DB0B500B51736 /* NSData+CRC32.m */; };
+		90CCEA5E0E9DD6AE00B51736 /* FDFeedUpdateAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 90CCEA5C0E9DD6AE00B51736 /* FDFeedUpdateAction.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		90CCEA5F0E9DD6AE00B51736 /* FDFeedUpdateAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CCEA5D0E9DD6AE00B51736 /* FDFeedUpdateAction.m */; };
+		90CCEA600E9DD6AE00B51736 /* FDFeedUpdateAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 90CCEA5C0E9DD6AE00B51736 /* FDFeedUpdateAction.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		90CCEA610E9DD6AE00B51736 /* FDFeedUpdateAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CCEA5D0E9DD6AE00B51736 /* FDFeedUpdateAction.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,7 +128,7 @@
 		32DBCF5E0370ADEE00C91783 /* Feeds_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feeds_Prefix.pch; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* Feeds.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Feeds.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		90A520B40E9C34270056B159 /* libFeeds-iPhone.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libFeeds-iPhone.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		90A520B40E9C34270056B159 /* libFeeds-iPhone-iphonesimulator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libFeeds-iPhone-iphonesimulator.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A520B70E9C34520056B159 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		90A5211A0E9C352A0056B159 /* FDFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDFeed.h; path = Classes/FDFeed.h; sourceTree = "<group>"; };
 		90A5211B0E9C352A0056B159 /* FDFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDFeed.m; path = Classes/FDFeed.m; sourceTree = "<group>"; };
@@ -156,6 +179,20 @@
 		90CCE8720E9D468400B51736 /* SerializationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SerializationTests.m; path = Tests/SerializationTests.m; sourceTree = "<group>"; };
 		90CCE9150E9D50B800B51736 /* MergeTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MergeTests.h; path = Tests/MergeTests.h; sourceTree = "<group>"; };
 		90CCE9160E9D50B800B51736 /* MergeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MergeTests.m; path = Tests/MergeTests.m; sourceTree = "<group>"; };
+		90CCE9630E9D60B000B51736 /* FDFeedStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDFeedStore.h; path = Classes/FDFeedStore.h; sourceTree = "<group>"; };
+		90CCE9640E9D60B000B51736 /* FDFeedStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDFeedStore.m; path = Classes/FDFeedStore.m; sourceTree = "<group>"; };
+		90CCE9690E9D60B800B51736 /* FDFeedInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDFeedInfo.h; path = Classes/FDFeedInfo.h; sourceTree = "<group>"; };
+		90CCE96A0E9D60B800B51736 /* FDFeedInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDFeedInfo.m; path = Classes/FDFeedInfo.m; sourceTree = "<group>"; };
+		90CCE96F0E9D60EE00B51736 /* FDFeedStoreDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDFeedStoreDelegate.h; path = Classes/FDFeedStoreDelegate.h; sourceTree = "<group>"; };
+		90CCE99E0E9D653F00B51736 /* FDFeedStore+Implementation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "FDFeedStore+Implementation.h"; path = "Classes/FDFeedStore+Implementation.h"; sourceTree = "<group>"; };
+		90CCE9A40E9D654C00B51736 /* FDFeedInfo+Implementation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "FDFeedInfo+Implementation.h"; path = "Classes/FDFeedInfo+Implementation.h"; sourceTree = "<group>"; };
+		90CCE9E40E9D76C600B51736 /* StoreTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StoreTests.h; path = Tests/StoreTests.h; sourceTree = "<group>"; };
+		90CCE9E50E9D76C600B51736 /* StoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StoreTests.m; path = Tests/StoreTests.m; sourceTree = "<group>"; };
+		90CCE9E80E9D770500B51736 /* doxygen.config */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = doxygen.config; path = Documentation/doxygen.config; sourceTree = "<group>"; };
+		90CCEA330E9DB0B500B51736 /* NSData+CRC32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+CRC32.h"; path = "Classes/NSData+CRC32.h"; sourceTree = "<group>"; };
+		90CCEA340E9DB0B500B51736 /* NSData+CRC32.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+CRC32.m"; path = "Classes/NSData+CRC32.m"; sourceTree = "<group>"; };
+		90CCEA5C0E9DD6AE00B51736 /* FDFeedUpdateAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDFeedUpdateAction.h; path = Classes/FDFeedUpdateAction.h; sourceTree = "<group>"; };
+		90CCEA5D0E9DD6AE00B51736 /* FDFeedUpdateAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDFeedUpdateAction.m; path = Classes/FDFeedUpdateAction.m; sourceTree = "<group>"; };
 		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -193,7 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				8DC2EF5B0486A6940098B216 /* Feeds.framework */,
-				90A520B40E9C34270056B159 /* libFeeds-iPhone.a */,
+				90A520B40E9C34270056B159 /* libFeeds-iPhone-iphonesimulator.a */,
 				90CCE25A0E9C6E1100B51736 /* FeedsTest.octest */,
 			);
 			name = Products;
@@ -234,6 +271,7 @@
 		08FB77AEFE84172EC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				90CCE9610E9D609C00B51736 /* Engine */,
 				90A521870E9C3BEB0056B159 /* Parsers */,
 				90A5211A0E9C352A0056B159 /* FDFeed.h */,
 				90CCE10B0E9C571300B51736 /* FDFeed+Implementation.h */,
@@ -256,6 +294,8 @@
 				90A521A00E9C4CD90056B159 /* FDImage.h */,
 				90CCE11A0E9C577700B51736 /* FDImage+Implementation.h */,
 				90A521A10E9C4CD90056B159 /* FDImage.m */,
+				90CCEA330E9DB0B500B51736 /* NSData+CRC32.h */,
+				90CCEA340E9DB0B500B51736 /* NSData+CRC32.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -284,6 +324,7 @@
 		32C88DFF0371C24200C91783 /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
+				90CCE9E80E9D770500B51736 /* doxygen.config */,
 				32DBCF5E0370ADEE00C91783 /* Feeds_Prefix.pch */,
 				90A5213A0E9C391E0056B159 /* Feeds.h */,
 				90A521320E9C38B00056B159 /* FDConfig.h */,
@@ -323,8 +364,26 @@
 				90CCE8720E9D468400B51736 /* SerializationTests.m */,
 				90CCE9150E9D50B800B51736 /* MergeTests.h */,
 				90CCE9160E9D50B800B51736 /* MergeTests.m */,
+				90CCE9E40E9D76C600B51736 /* StoreTests.h */,
+				90CCE9E50E9D76C600B51736 /* StoreTests.m */,
 			);
 			name = "Test Cases";
+			sourceTree = "<group>";
+		};
+		90CCE9610E9D609C00B51736 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				90CCE9630E9D60B000B51736 /* FDFeedStore.h */,
+				90CCE99E0E9D653F00B51736 /* FDFeedStore+Implementation.h */,
+				90CCE9640E9D60B000B51736 /* FDFeedStore.m */,
+				90CCE96F0E9D60EE00B51736 /* FDFeedStoreDelegate.h */,
+				90CCE9690E9D60B800B51736 /* FDFeedInfo.h */,
+				90CCE9A40E9D654C00B51736 /* FDFeedInfo+Implementation.h */,
+				90CCE96A0E9D60B800B51736 /* FDFeedInfo.m */,
+				90CCEA5C0E9DD6AE00B51736 /* FDFeedUpdateAction.h */,
+				90CCEA5D0E9DD6AE00B51736 /* FDFeedUpdateAction.m */,
+			);
+			name = Engine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -355,6 +414,13 @@
 				90CCE1C70E9C65A000B51736 /* FDTitledURL+Implementation.h in Headers */,
 				90CCE2D50E9C7C2C00B51736 /* FDEntry.h in Headers */,
 				90CCE3250E9C84EB00B51736 /* FDContentDetector.h in Headers */,
+				90CCE9670E9D60B000B51736 /* FDFeedStore.h in Headers */,
+				90CCE96B0E9D60B800B51736 /* FDFeedInfo.h in Headers */,
+				90CCE9710E9D60EE00B51736 /* FDFeedStoreDelegate.h in Headers */,
+				90CCE9A00E9D653F00B51736 /* FDFeedStore+Implementation.h in Headers */,
+				90CCE9A60E9D654C00B51736 /* FDFeedInfo+Implementation.h in Headers */,
+				90CCEA350E9DB0B500B51736 /* NSData+CRC32.h in Headers */,
+				90CCEA5E0E9DD6AE00B51736 /* FDFeedUpdateAction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +449,13 @@
 				90CCE1C80E9C65A000B51736 /* FDTitledURL+Implementation.h in Headers */,
 				90CCE2D60E9C7C2C00B51736 /* FDEntry.h in Headers */,
 				90CCE3270E9C84EB00B51736 /* FDContentDetector.h in Headers */,
+				90CCE9650E9D60B000B51736 /* FDFeedStore.h in Headers */,
+				90CCE96D0E9D60B800B51736 /* FDFeedInfo.h in Headers */,
+				90CCE9730E9D60EE00B51736 /* FDFeedStoreDelegate.h in Headers */,
+				90CCE9A20E9D653F00B51736 /* FDFeedStore+Implementation.h in Headers */,
+				90CCE9A80E9D654C00B51736 /* FDFeedInfo+Implementation.h in Headers */,
+				90CCEA370E9DB0B500B51736 /* NSData+CRC32.h in Headers */,
+				90CCEA600E9DD6AE00B51736 /* FDFeedUpdateAction.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,7 +496,7 @@
 			);
 			name = "Feeds-iPhone";
 			productName = "Feeds-iPhone";
-			productReference = 90A520B40E9C34270056B159 /* libFeeds-iPhone.a */;
+			productReference = 90A520B40E9C34270056B159 /* libFeeds-iPhone-iphonesimulator.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		90CCE2590E9C6E1100B51736 /* FeedsTest */ = {
@@ -530,6 +603,10 @@
 				90CCE1C20E9C659200B51736 /* FDTitledURL.m in Sources */,
 				90CCE3260E9C84EB00B51736 /* FDContentDetector.m in Sources */,
 				90CCE32F0E9C871F00B51736 /* FDExceptions.m in Sources */,
+				90CCE9680E9D60B000B51736 /* FDFeedStore.m in Sources */,
+				90CCE96C0E9D60B800B51736 /* FDFeedInfo.m in Sources */,
+				90CCEA360E9DB0B500B51736 /* NSData+CRC32.m in Sources */,
+				90CCEA5F0E9DD6AE00B51736 /* FDFeedUpdateAction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -549,6 +626,10 @@
 				90CCE1C40E9C659200B51736 /* FDTitledURL.m in Sources */,
 				90CCE3280E9C84EB00B51736 /* FDContentDetector.m in Sources */,
 				90CCE3300E9C871F00B51736 /* FDExceptions.m in Sources */,
+				90CCE9660E9D60B000B51736 /* FDFeedStore.m in Sources */,
+				90CCE96E0E9D60B800B51736 /* FDFeedInfo.m in Sources */,
+				90CCEA380E9DB0B500B51736 /* NSData+CRC32.m in Sources */,
+				90CCEA610E9DD6AE00B51736 /* FDFeedUpdateAction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,6 +643,7 @@
 				90CCE4420E9CA04900B51736 /* AtomTests.m in Sources */,
 				90CCE8730E9D468400B51736 /* SerializationTests.m in Sources */,
 				90CCE9170E9D50B800B51736 /* MergeTests.m in Sources */,
+				90CCE9E60E9D76C600B51736 /* StoreTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -664,7 +746,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Feeds_Prefix.pch;
 				PREBINDING = NO;
-				PRODUCT_NAME = "Feeds-iPhone";
+				PRIVATE_HEADERS_FOLDER_PATH = FeedsPrivateHeaders;
+				PRODUCT_NAME = "Feeds-iPhone$(EFFECTIVE_PLATFORM_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = Feeds;
 				SDKROOT = iphoneos2.1;
 			};
 			name = Debug;
@@ -679,7 +763,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Feeds_Prefix.pch;
 				PREBINDING = NO;
-				PRODUCT_NAME = "Feeds-iPhone";
+				PRIVATE_HEADERS_FOLDER_PATH = FeedsPrivateHeaders;
+				PRODUCT_NAME = "Feeds-iPhone$(EFFECTIVE_PLATFORM_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = Feeds;
 				SDKROOT = iphoneos2.1;
 				ZERO_LINK = NO;
 			};

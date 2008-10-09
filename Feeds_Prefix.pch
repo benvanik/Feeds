@@ -4,6 +4,7 @@
 
 #ifdef __OBJC__
 #import <Foundation/Foundation.h>
+#import "NSData+CRC32.h"
 #endif
 
 #import "FDConfig.h"

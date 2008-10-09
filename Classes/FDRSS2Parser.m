@@ -31,7 +31,8 @@
         [xml setShouldResolveExternalEntities:NO];
 
         // Sun, 29 Jan 2006 05:00:00 GMT
-        dateFormatter = [[NSDateFormatter alloc] initWithDateFormat:@"%a, %d %b %Y %H:%M:%S %Z" allowNaturalLanguage:NO];
+        dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"%a, %d %b %Y %H:%M:%S %Z"];
     }
     return self;
 }
