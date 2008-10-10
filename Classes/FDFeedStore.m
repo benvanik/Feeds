@@ -298,7 +298,15 @@ volatile int    __fd_singletonLock = 0;
     
     id<FDFeedStoreDelegate> delegate = [action delegate];
     
-    FDFeed* feed = [FDFeed feedWithData:data];
+    FDFeed* feed = nil;
+    @try
+    {
+        feed = [FDFeed feedWithData:data];
+    }
+    @catch( NSException* ex )
+    {
+        // TODO: better logging and reporting to end user
+    }
     if( feed != nil )
     {
         // Load existing feed data for merge
