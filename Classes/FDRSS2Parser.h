@@ -35,6 +35,7 @@ typedef NSInteger FDRSS2State;
     NSMutableDictionary*    categories;
     NSMutableArray*         entries;
     NSMutableArray*         entryCategories;
+    NSMutableArray*         entryEnclosures;
     
     NSDateFormatter*        dateFormatter;
     NSDictionary*           attributes;

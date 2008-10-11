@@ -87,6 +87,12 @@
 - (FDFeedInfo*) feedInfoForURL:(NSURL*)url;
 
 /**
+ * Sets the feeds last updated time to never so that it will be fetched again.
+ * @param feedInfo The feed to invalidate.
+ */
+- (void) invalidateFeed:(FDFeedInfo*)feedInfo;
+
+/**
  * Get the cached copy of the feed for the given source URL, if present.
  * @param url The source URL of the feed.
  * @return The cached copy of the feed from the last update or nil of the feed has yet to be fetched.

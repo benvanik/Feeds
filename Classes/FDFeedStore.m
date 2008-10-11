@@ -12,6 +12,7 @@
 #import "FDFeed+Implementation.h"
 #import "FDFeedUpdateAction.h"
 #import "FDFeedStoreDelegate.h"
+#import "FDCRC32.h"
 #import <libkern/OSAtomic.h>
 
 #define kDefaultSimultaneousUpdates 2
@@ -33,7 +34,10 @@ volatile int    __fd_singletonLock = 0;
     {
         dataLock = [[NSLock alloc] init];
         queueLock = [[NSLock alloc] init];
-        cachePath = [[[NSSearchPathForDirectoriesInDomains( NSCachesDirectory, NSUserDomainMask, YES ) objectAtIndex:0] stringByAppendingPathComponent:@"Feeds"] retain];
+        NSString* userCachePath = [NSSearchPathForDirectoriesInDomains( NSCachesDirectory, NSUserDomainMask, YES ) objectAtIndex:0];
+        if( [[NSFileManager defaultManager] fileExistsAtPath:userCachePath] == NO )
+            [[NSFileManager defaultManager] createDirectoryAtPath:userCachePath attributes:nil];
+        cachePath = [[userCachePath stringByAppendingPathComponent:@"Feeds"] retain];
         if( [[NSFileManager defaultManager] fileExistsAtPath:cachePath] == NO )
             [[NSFileManager defaultManager] createDirectoryAtPath:cachePath attributes:nil];
         feeds = [[NSMutableDictionary alloc] init];
@@ -175,6 +179,14 @@ volatile int    __fd_singletonLock = 0;
     FDFeedInfo* feedInfo = [[feeds objectForKey:url] retain];
     [dataLock unlock];
     return [feedInfo autorelease];
+}
+
+- (void) invalidateFeed:(FDFeedInfo*)feedInfo
+{
+    [dataLock lock];
+    [feedInfo setLastUpdated:nil];
+    [self saveFeedMetadata];
+    [dataLock unlock];
 }
 
 - (FDFeed*) cachedFeedForURL:(NSURL*)url
@@ -409,7 +421,7 @@ volatile int    __fd_singletonLock = 0;
 
 - (NSString*) fileNameForURL:(NSURL*)url
 {
-    uint checksum = [NSData checksumOfString:[url absoluteString]];
+    uint checksum = [FDCRC32 checksumOfString:[url absoluteString]];
     return [NSString stringWithFormat:@"feed-%08x", checksum];
 }
 

@@ -46,6 +46,7 @@
     [categories release];
     [entries release];
     [entryCategories release];
+    [entryEnclosures release];
     [attributes release];
     [text release];
     
@@ -98,6 +99,7 @@
             state = FDRSS2InItem;
             entry = [[FDEntry alloc] init];
             entryCategories = [[NSMutableArray alloc] init];
+            entryEnclosures = [[NSMutableArray alloc] init];
         }
         else if( [elementName isEqualToString:@"textInput"] == YES )
         {
@@ -183,9 +185,12 @@
             state = FDRSS2InChannel;
             // TODO: sort entryCategories
             [entry setCategories:entryCategories];
+            [entry setEnclosures:entryEnclosures];
             [entries addObject:entry];
             [entryCategories release];
             entryCategories = nil;
+            [entryEnclosures release];
+            entryEnclosures = nil;
             [entry release];
             entry = nil;
         }
@@ -253,15 +258,11 @@
         }
         else if( [elementName isEqualToString:@"enclosure"] == YES )
         {
-            // Sometimes multiple enclosures are included - use only the first
-            if( [entry enclosure] == nil )
-            {
-                FDEnclosure* enclosure = [[FDEnclosure alloc] initWithURL:[NSURL URLWithString:[attributes objectForKey:@"url"]]
-                                                             withMimeType:[attributes objectForKey:@"type"]
-                                                                andLength:[[attributes objectForKey:@"length"] integerValue]];
-                [entry setEnclosure:enclosure];
-                [enclosure release];
-            }
+            FDEnclosure* enclosure = [[FDEnclosure alloc] initWithURL:[NSURL URLWithString:[attributes objectForKey:@"url"]]
+                                                         withMimeType:[attributes objectForKey:@"type"]
+                                                            andLength:[[attributes objectForKey:@"length"] integerValue]];
+            [entryEnclosures addObject:enclosure];
+            [enclosure release];
         }
     }
     else if( state == FDRSS2InTextInput )

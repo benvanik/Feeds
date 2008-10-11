@@ -23,7 +23,7 @@
 @synthesize categories;
 @synthesize author;
 @synthesize source;
-@synthesize enclosure;
+@synthesize enclosures;
 
 #pragma mark -
 #pragma mark Initialization
@@ -40,7 +40,7 @@
         categories = nil;
         author = nil;
         source = nil;
-        enclosure = nil;
+        enclosures = nil;
     }
     return self;
 }
@@ -63,8 +63,8 @@
     author = nil;
     [source release];
     source = nil;
-    [enclosure release];
-    enclosure = nil;
+    [enclosures release];
+    enclosures = nil;
     [super dealloc];
 }
 
@@ -84,7 +84,7 @@ FD_SETTER( PublicationDate,     publicationDate,    NSDate*             );
 FD_SETTER( Categories,          categories,         NSArray*            );
 FD_SETTER( Author,              author,             FDEmailAddress*     );
 FD_SETTER( Source,              source,             FDTitledURL*        );
-FD_SETTER( Enclosure,           enclosure,          FDEnclosure*        );
+FD_SETTER( Enclosures,          enclosures,         NSArray*            );
 
 #pragma mark -
 #pragma mark Serialization
@@ -102,7 +102,6 @@ FD_SETTER( Enclosure,           enclosure,          FDEnclosure*        );
     [entry setPublicationDate:[plist objectForKey:@"publicationDate"]];
     [entry setAuthor:[FDEmailAddress emailAddresWithContentsOfPropertyList:[plist objectForKey:@"author"]]];
     [entry setSource:[FDTitledURL titledURLWithContentsOfPropertyList:[plist objectForKey:@"source"]]];
-    [entry setEnclosure:[FDEnclosure enclosureWithContentsOfPropertyList:[plist objectForKey:@"enclosure"]]];
     NSArray* categoriesPlist = [plist objectForKey:@"categories"];
     if( categoriesPlist != nil )
     {
@@ -110,6 +109,14 @@ FD_SETTER( Enclosure,           enclosure,          FDEnclosure*        );
         for( NSDictionary* categoryPlist in categoriesPlist )
             [categories addObject:[FDCategory categoryWithContentsOfPropertyList:categoryPlist]];
         [entry setCategories:categories];
+    }
+    NSArray* enclosuresPlist = [plist objectForKey:@"enclosures"];
+    if( enclosuresPlist != nil )
+    {
+        NSMutableArray* enclosures = [NSMutableArray arrayWithCapacity:[enclosuresPlist count]];
+        for( NSDictionary* enclosurePlist in enclosuresPlist )
+            [enclosures addObject:[FDEnclosure enclosureWithContentsOfPropertyList:enclosurePlist]];
+        [entry setEnclosures:enclosures];
     }
     return [entry autorelease];
 }
@@ -119,6 +126,9 @@ FD_SETTER( Enclosure,           enclosure,          FDEnclosure*        );
     NSMutableArray* categoriesPlist = [NSMutableArray arrayWithCapacity:[categories count]];
     for( FDCategory* category in categories )
         [categoriesPlist addObject:[category propertyList]];
+    NSMutableArray* enclosuresPlist = [NSMutableArray arrayWithCapacity:[enclosures count]];
+    for( FDEnclosure* enclosure in enclosures )
+        [enclosuresPlist addObject:[enclosure propertyList]];
     NSMutableDictionary* plist = [NSMutableDictionary dictionary];
     if( permanentID != nil )
         [plist setObject:permanentID forKey:@"permanentID"];
@@ -136,8 +146,8 @@ FD_SETTER( Enclosure,           enclosure,          FDEnclosure*        );
         [plist setObject:[author propertyList] forKey:@"author"];
     if( source != nil )
         [plist setObject:[source propertyList] forKey:@"source"];
-    if( enclosure != nil )
-        [plist setObject:[enclosure propertyList] forKey:@"enclosure"];
+    if( [enclosures count] > 0 )
+        [plist setObject:enclosuresPlist forKey:@"enclosures"];
     return plist;
 }
 

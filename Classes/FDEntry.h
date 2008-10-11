@@ -24,7 +24,7 @@
     NSArray*        categories;
     FDEmailAddress* author;
     FDTitledURL*    source;
-    FDEnclosure*    enclosure;
+    NSArray*        enclosures;
 }
 
 /**
@@ -68,8 +68,8 @@
 @property (nonatomic, readonly) FDTitledURL* source;
 
 /**
- * The optional media enclosure.
+ * The optional list of media enclosures in the order they appear in the feed.
  */
-@property (nonatomic, readonly) FDEnclosure* enclosure;
+@property (nonatomic, readonly) NSArray* enclosures;
 
 @end

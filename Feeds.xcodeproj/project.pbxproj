@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
+		904CF6C70EA03F9600FC18DD /* FDCRC32.h in Headers */ = {isa = PBXBuildFile; fileRef = 904CF6C50EA03F9600FC18DD /* FDCRC32.h */; };
+		904CF6C80EA03F9600FC18DD /* FDCRC32.m in Sources */ = {isa = PBXBuildFile; fileRef = 904CF6C60EA03F9600FC18DD /* FDCRC32.m */; };
+		904CF6C90EA03F9600FC18DD /* FDCRC32.h in Headers */ = {isa = PBXBuildFile; fileRef = 904CF6C50EA03F9600FC18DD /* FDCRC32.h */; };
+		904CF6CA0EA03F9600FC18DD /* FDCRC32.m in Sources */ = {isa = PBXBuildFile; fileRef = 904CF6C60EA03F9600FC18DD /* FDCRC32.m */; };
 		90A520B80E9C34520056B159 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A520B70E9C34520056B159 /* CoreFoundation.framework */; };
 		90A5211C0E9C352A0056B159 /* FDFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = 90A5211A0E9C352A0056B159 /* FDFeed.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		90A5211D0E9C352A0056B159 /* FDFeed.m in Sources */ = {isa = PBXBuildFile; fileRef = 90A5211B0E9C352A0056B159 /* FDFeed.m */; };
@@ -100,10 +104,6 @@
 		90CCE9A60E9D654C00B51736 /* FDFeedInfo+Implementation.h in Headers */ = {isa = PBXBuildFile; fileRef = 90CCE9A40E9D654C00B51736 /* FDFeedInfo+Implementation.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		90CCE9A80E9D654C00B51736 /* FDFeedInfo+Implementation.h in Headers */ = {isa = PBXBuildFile; fileRef = 90CCE9A40E9D654C00B51736 /* FDFeedInfo+Implementation.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		90CCE9E60E9D76C600B51736 /* StoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CCE9E50E9D76C600B51736 /* StoreTests.m */; };
-		90CCEA350E9DB0B500B51736 /* NSData+CRC32.h in Headers */ = {isa = PBXBuildFile; fileRef = 90CCEA330E9DB0B500B51736 /* NSData+CRC32.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		90CCEA360E9DB0B500B51736 /* NSData+CRC32.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CCEA340E9DB0B500B51736 /* NSData+CRC32.m */; };
-		90CCEA370E9DB0B500B51736 /* NSData+CRC32.h in Headers */ = {isa = PBXBuildFile; fileRef = 90CCEA330E9DB0B500B51736 /* NSData+CRC32.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		90CCEA380E9DB0B500B51736 /* NSData+CRC32.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CCEA340E9DB0B500B51736 /* NSData+CRC32.m */; };
 		90CCEA5E0E9DD6AE00B51736 /* FDFeedUpdateAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 90CCEA5C0E9DD6AE00B51736 /* FDFeedUpdateAction.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		90CCEA5F0E9DD6AE00B51736 /* FDFeedUpdateAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CCEA5D0E9DD6AE00B51736 /* FDFeedUpdateAction.m */; };
 		90CCEA600E9DD6AE00B51736 /* FDFeedUpdateAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 90CCEA5C0E9DD6AE00B51736 /* FDFeedUpdateAction.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -128,6 +128,8 @@
 		32DBCF5E0370ADEE00C91783 /* Feeds_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feeds_Prefix.pch; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* Feeds */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = folder; path = Feeds; sourceTree = BUILT_PRODUCTS_DIR; };
+		904CF6C50EA03F9600FC18DD /* FDCRC32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDCRC32.h; path = Classes/FDCRC32.h; sourceTree = "<group>"; };
+		904CF6C60EA03F9600FC18DD /* FDCRC32.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDCRC32.m; path = Classes/FDCRC32.m; sourceTree = "<group>"; };
 		90A520B40E9C34270056B159 /* libFeeds-iPhone-iphoneos.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libFeeds-iPhone-iphoneos.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A520B70E9C34520056B159 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		90A5211A0E9C352A0056B159 /* FDFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDFeed.h; path = Classes/FDFeed.h; sourceTree = "<group>"; };
@@ -189,8 +191,6 @@
 		90CCE9E40E9D76C600B51736 /* StoreTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StoreTests.h; path = Tests/StoreTests.h; sourceTree = "<group>"; };
 		90CCE9E50E9D76C600B51736 /* StoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StoreTests.m; path = Tests/StoreTests.m; sourceTree = "<group>"; };
 		90CCE9E80E9D770500B51736 /* doxygen.config */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = doxygen.config; path = Documentation/doxygen.config; sourceTree = "<group>"; };
-		90CCEA330E9DB0B500B51736 /* NSData+CRC32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+CRC32.h"; path = "Classes/NSData+CRC32.h"; sourceTree = "<group>"; };
-		90CCEA340E9DB0B500B51736 /* NSData+CRC32.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+CRC32.m"; path = "Classes/NSData+CRC32.m"; sourceTree = "<group>"; };
 		90CCEA5C0E9DD6AE00B51736 /* FDFeedUpdateAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDFeedUpdateAction.h; path = Classes/FDFeedUpdateAction.h; sourceTree = "<group>"; };
 		90CCEA5D0E9DD6AE00B51736 /* FDFeedUpdateAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDFeedUpdateAction.m; path = Classes/FDFeedUpdateAction.m; sourceTree = "<group>"; };
 		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
@@ -294,8 +294,8 @@
 				90A521A00E9C4CD90056B159 /* FDImage.h */,
 				90CCE11A0E9C577700B51736 /* FDImage+Implementation.h */,
 				90A521A10E9C4CD90056B159 /* FDImage.m */,
-				90CCEA330E9DB0B500B51736 /* NSData+CRC32.h */,
-				90CCEA340E9DB0B500B51736 /* NSData+CRC32.m */,
+				904CF6C50EA03F9600FC18DD /* FDCRC32.h */,
+				904CF6C60EA03F9600FC18DD /* FDCRC32.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -419,8 +419,8 @@
 				90CCE9710E9D60EE00B51736 /* FDFeedStoreDelegate.h in Headers */,
 				90CCE9A00E9D653F00B51736 /* FDFeedStore+Implementation.h in Headers */,
 				90CCE9A60E9D654C00B51736 /* FDFeedInfo+Implementation.h in Headers */,
-				90CCEA350E9DB0B500B51736 /* NSData+CRC32.h in Headers */,
 				90CCEA5E0E9DD6AE00B51736 /* FDFeedUpdateAction.h in Headers */,
+				904CF6C70EA03F9600FC18DD /* FDCRC32.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,8 +454,8 @@
 				90CCE9730E9D60EE00B51736 /* FDFeedStoreDelegate.h in Headers */,
 				90CCE9A20E9D653F00B51736 /* FDFeedStore+Implementation.h in Headers */,
 				90CCE9A80E9D654C00B51736 /* FDFeedInfo+Implementation.h in Headers */,
-				90CCEA370E9DB0B500B51736 /* NSData+CRC32.h in Headers */,
 				90CCEA600E9DD6AE00B51736 /* FDFeedUpdateAction.h in Headers */,
+				904CF6C90EA03F9600FC18DD /* FDCRC32.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,8 +605,8 @@
 				90CCE32F0E9C871F00B51736 /* FDExceptions.m in Sources */,
 				90CCE9680E9D60B000B51736 /* FDFeedStore.m in Sources */,
 				90CCE96C0E9D60B800B51736 /* FDFeedInfo.m in Sources */,
-				90CCEA360E9DB0B500B51736 /* NSData+CRC32.m in Sources */,
 				90CCEA5F0E9DD6AE00B51736 /* FDFeedUpdateAction.m in Sources */,
+				904CF6C80EA03F9600FC18DD /* FDCRC32.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,8 +628,8 @@
 				90CCE3300E9C871F00B51736 /* FDExceptions.m in Sources */,
 				90CCE9660E9D60B000B51736 /* FDFeedStore.m in Sources */,
 				90CCE96E0E9D60B800B51736 /* FDFeedInfo.m in Sources */,
-				90CCEA380E9DB0B500B51736 /* NSData+CRC32.m in Sources */,
 				90CCEA610E9DD6AE00B51736 /* FDFeedUpdateAction.m in Sources */,
+				904CF6CA0EA03F9600FC18DD /* FDCRC32.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

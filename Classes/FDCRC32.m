@@ -1,14 +1,14 @@
 //
-//  NSData+CRC32.m
+//  FDCRC32.m
 //  Feeds
 //
 //  Created by Ben Vanik on 10/8/08.
 //  Copyright 2008 Ben Vanik ( http://www.noxa.org ). All rights reserved.
 //
 
-#import "NSData+CRC32.h"
+#import "FDCRC32.h"
 
-@implementation NSData (CRC32)
+@implementation FDCRC32
 
 static const uint __fd_crc_table[ 256 ] = {
 0x00000000L, 0x77073096L, 0xee0e612cL, 0x990951baL, 0x076dc419L,
@@ -88,10 +88,10 @@ uint __fd_crc32( char* data, int length )
     return crc ^ 0xFFFFFFFF;
 }
 
-- (uint) checksum
++ (uint) checksumOfData:(NSData*)data
 {
-    char* data = ( char* )[self bytes];
-    return __fd_crc32( data, [self length] );
+    char* bytes = ( char* )[data bytes];
+    return __fd_crc32( bytes, [data length] );
 }
 
 + (uint) checksumOfString:(NSString*)string

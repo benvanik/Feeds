@@ -19,7 +19,7 @@
 - (void) setCategories:(NSArray*)value;
 - (void) setAuthor:(FDEmailAddress*)value;
 - (void) setSource:(FDTitledURL*)value;
-- (void) setEnclosure:(FDEnclosure*)value;
+- (void) setEnclosures:(NSArray*)value;
 
 /**
  * Creates and returns an entry with the contents of the given property list.

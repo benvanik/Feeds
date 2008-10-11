@@ -1,5 +1,5 @@
 //
-//  NSData+CRC32.h
+//  FDCRC32.h
 //  Feeds
 //
 //  Created by Ben Vanik on 10/8/08.
@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSData (CRC32)
+@interface FDCRC32 : NSObject {
+}
 
-- (uint) checksum;
++ (uint) checksumOfData:(NSData*)data;
 + (uint) checksumOfString:(NSString*)string;
 
 @end
