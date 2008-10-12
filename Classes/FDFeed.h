@@ -78,10 +78,11 @@
 
 /**
  * Merges the unique contents of the given feed into this feed.
- * @param otherFeed A feed that may contain new items.
- * @return YES if new items were added.
+ * @param otherFeed A feed that may contain new items or missing items.
+ * @param removeMissingEntries A flag that, if set, changes the merge behavior to remove items that are not present in the given feed.
+ * @return YES if new items were added or items were removed.
  */
-- (BOOL) addNewItemsFromFeed:(FDFeed*)otherFeed;
+- (BOOL) addNewItemsFromFeed:(FDFeed*)otherFeed removeMissingEntries:(BOOL)removeMissingEntries;
 
 /**
  * Creates and returns a feed with the contents of the given property list.

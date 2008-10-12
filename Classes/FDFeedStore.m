@@ -22,6 +22,7 @@ volatile int    __fd_singletonLock = 0;
 
 @implementation FDFeedStore
 
+@synthesize removeMissingEntries;
 @synthesize cachePath;
 @synthesize simultaneousUpdates;
 
@@ -46,6 +47,8 @@ volatile int    __fd_singletonLock = 0;
         pendingUpdates = [[NSMutableArray alloc] init];
         simultaneousUpdates = kDefaultSimultaneousUpdates;
         currentWorkerCount = 0;
+        
+        removeMissingEntries = YES;
         
         [self loadFeedMetadata];
     }
@@ -338,7 +341,7 @@ volatile int    __fd_singletonLock = 0;
             // Merge
             // TODO: make this thread safe - it's not right now! No one holds the dataLock except us, so if someone was using the feed outside they'd have issues!
             [dataLock lock];
-            BOOL changed = [existingFeed addNewItemsFromFeed:feed];
+            BOOL changed = [existingFeed addNewItemsFromFeed:feed removeMissingEntries:removeMissingEntries];
             [feedInfo setTitle:[feed title]];
             [feedInfo setLastUpdated:[NSDate date]];
             [feedInfo setHasNewEntries:changed];

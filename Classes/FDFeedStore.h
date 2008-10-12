@@ -16,6 +16,7 @@
  * A simple feed storage and update manager.
  */
 @interface FDFeedStore : NSObject {
+    BOOL                    removeMissingEntries;
     NSLock*                 dataLock;
     NSLock*                 queueLock;
     NSString*               cachePath;
@@ -26,6 +27,11 @@
     NSInteger               simultaneousUpdates;
     volatile NSInteger      currentWorkerCount;
 }
+
+/**
+ * If set updates will remove existing entries not in the newly fetched feed.
+ */
+@property BOOL removeMissingEntries;
 
 /**
  * The path to where cached feeds should be stored.

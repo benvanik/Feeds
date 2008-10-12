@@ -6,12 +6,26 @@
 	objectVersion = 45;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		90F59C1E0EA1A039001D7379 /* Documentation */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 90F59C210EA1A058001D7379 /* Build configuration list for PBXAggregateTarget "Documentation" */;
+			buildPhases = (
+				90F59C1D0EA1A039001D7379 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Documentation;
+			productName = Documentation;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
-		904CF6C70EA03F9600FC18DD /* FDCRC32.h in Headers */ = {isa = PBXBuildFile; fileRef = 904CF6C50EA03F9600FC18DD /* FDCRC32.h */; };
+		904CF6C70EA03F9600FC18DD /* FDCRC32.h in Headers */ = {isa = PBXBuildFile; fileRef = 904CF6C50EA03F9600FC18DD /* FDCRC32.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		904CF6C80EA03F9600FC18DD /* FDCRC32.m in Sources */ = {isa = PBXBuildFile; fileRef = 904CF6C60EA03F9600FC18DD /* FDCRC32.m */; };
-		904CF6C90EA03F9600FC18DD /* FDCRC32.h in Headers */ = {isa = PBXBuildFile; fileRef = 904CF6C50EA03F9600FC18DD /* FDCRC32.h */; };
+		904CF6C90EA03F9600FC18DD /* FDCRC32.h in Headers */ = {isa = PBXBuildFile; fileRef = 904CF6C50EA03F9600FC18DD /* FDCRC32.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		904CF6CA0EA03F9600FC18DD /* FDCRC32.m in Sources */ = {isa = PBXBuildFile; fileRef = 904CF6C60EA03F9600FC18DD /* FDCRC32.m */; };
 		90A520B80E9C34520056B159 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A520B70E9C34520056B159 /* CoreFoundation.framework */; };
 		90A5211C0E9C352A0056B159 /* FDFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = 90A5211A0E9C352A0056B159 /* FDFeed.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -470,7 +484,6 @@
 				8DC2EF520486A6940098B216 /* Resources */,
 				8DC2EF540486A6940098B216 /* Sources */,
 				8DC2EF560486A6940098B216 /* Frameworks */,
-				90CCE2AB0E9C710900B51736 /* Generate Documentation */,
 			);
 			buildRules = (
 			);
@@ -534,6 +547,7 @@
 				8DC2EF4F0486A6940098B216 /* Feeds */,
 				90A520B30E9C34270056B159 /* Feeds-iPhone */,
 				90CCE2590E9C6E1100B51736 /* FeedsTest */,
+				90F59C1E0EA1A039001D7379 /* Documentation */,
 			);
 		};
 /* End PBXProject section */
@@ -570,14 +584,13 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n#\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
-		90CCE2AB0E9C710900B51736 /* Generate Documentation */ = {
+		90F59C1D0EA1A039001D7379 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Generate Documentation";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -825,6 +838,29 @@
 			};
 			name = Release;
 		};
+		90F59C1F0EA1A03A001D7379 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DOXYGEN_PATH = /Applications/Doxygen.app/Contents/Resources/doxygen;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = Documentation;
+			};
+			name = Debug;
+		};
+		90F59C200EA1A03A001D7379 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DOXYGEN_PATH = /Applications/Doxygen.app/Contents/Resources/doxygen;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				PRODUCT_NAME = Documentation;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -860,6 +896,15 @@
 			buildConfigurations = (
 				90CCE25D0E9C6E1100B51736 /* Debug */,
 				90CCE25E0E9C6E1100B51736 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		90F59C210EA1A058001D7379 /* Build configuration list for PBXAggregateTarget "Documentation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90F59C1F0EA1A03A001D7379 /* Debug */,
+				90F59C200EA1A03A001D7379 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

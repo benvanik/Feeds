@@ -20,3 +20,5 @@
 #import "FDFeedStore.h"
 #import "FDFeedStoreDelegate.h"
 #import "FDFeedInfo.h"
+
+#import "FDCRC32.h"

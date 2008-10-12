@@ -148,7 +148,7 @@ FD_SETTER( Entries,             entries,            NSArray*            );
 #pragma mark -
 #pragma mark Management
 
-- (BOOL) addNewItemsFromFeed:(FDFeed*)otherFeed
+- (BOOL) addNewItemsFromFeed:(FDFeed*)otherFeed removeMissingEntries:(BOOL)removeMissingEntries
 {
     BOOL contentsChanged = NO;
     
@@ -158,7 +158,8 @@ FD_SETTER( Entries,             entries,            NSArray*            );
         [localCategories setObject:category forKey:[category label]];
     for( FDCategory* category in [otherFeed categories] )
     {
-        if( [localCategories objectForKey:[category label]] == nil )
+        FDCategory* presentCategory = [localCategories objectForKey:[category label]];
+        if( presentCategory == nil )
         {
             // New category
             FDCategory* newCategory = [[FDCategory alloc] initWithLabel:[category label]];
@@ -172,9 +173,11 @@ FD_SETTER( Entries,             entries,            NSArray*            );
     NSMutableDictionary* localEntries = [[NSMutableDictionary alloc] initWithCapacity:[entries count] + 5];
     for( FDEntry* entry in entries )
         [localEntries setObject:entry forKey:[entry permanentID]];
+    NSMutableArray* presentLocalEntries = [[NSMutableArray alloc] initWithArray:categories];
     for( FDEntry* entry in [otherFeed entries] )
     {
-        if( [localEntries objectForKey:[entry permanentID]] == nil )
+        FDEntry* presentEntry = [localEntries objectForKey:[entry permanentID]];
+        if( presentEntry == nil )
         {
             // New entry
             // Instead of copying everything, just serialize/deserialize
@@ -190,7 +193,20 @@ FD_SETTER( Entries,             entries,            NSArray*            );
             [localEntries setObject:newEntry forKey:[newEntry permanentID]];
             contentsChanged = YES;
         }
+        else
+            [presentLocalEntries removeObject:presentEntry];
     }
+    // presentLocalEntries has a list of entries in us but not in the other feed
+    if( ( removeMissingEntries == YES ) && ( [presentLocalEntries count] > 0 ) )
+    {
+        // Remove the entries
+        for( FDEntry* entry in presentLocalEntries )
+            [localEntries removeObjectForKey:[entry permanentID]];
+        contentsChanged = YES;
+    }
+    [presentLocalEntries release];
+    
+    // TODO: remove empty categories
 
     // TODO: sort categories/entries
     NSArray* updatedCategories = [localCategories allValues];
