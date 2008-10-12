@@ -173,7 +173,7 @@ FD_SETTER( Entries,             entries,            NSArray*            );
     NSMutableDictionary* localEntries = [[NSMutableDictionary alloc] initWithCapacity:[entries count] + 5];
     for( FDEntry* entry in entries )
         [localEntries setObject:entry forKey:[entry permanentID]];
-    NSMutableArray* presentLocalEntries = [[NSMutableArray alloc] initWithArray:categories];
+    NSMutableArray* presentLocalEntries = [[NSMutableArray alloc] initWithArray:entries];
     for( FDEntry* entry in [otherFeed entries] )
     {
         FDEntry* presentEntry = [localEntries objectForKey:[entry permanentID]];
