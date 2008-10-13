@@ -35,12 +35,16 @@ volatile int    __fd_singletonLock = 0;
     {
         dataLock = [[NSLock alloc] init];
         queueLock = [[NSLock alloc] init];
+
+        NSFileManager* fileManager = [[NSFileManager alloc] init];
         NSString* userCachePath = [NSSearchPathForDirectoriesInDomains( NSCachesDirectory, NSUserDomainMask, YES ) objectAtIndex:0];
-        if( [[NSFileManager defaultManager] fileExistsAtPath:userCachePath] == NO )
-            [[NSFileManager defaultManager] createDirectoryAtPath:userCachePath attributes:nil];
+        if( [fileManager fileExistsAtPath:userCachePath] == NO )
+            [fileManager createDirectoryAtPath:userCachePath attributes:nil];
         cachePath = [[userCachePath stringByAppendingPathComponent:@"Feeds"] retain];
-        if( [[NSFileManager defaultManager] fileExistsAtPath:cachePath] == NO )
-            [[NSFileManager defaultManager] createDirectoryAtPath:cachePath attributes:nil];
+        if( [fileManager fileExistsAtPath:cachePath] == NO )
+            [fileManager createDirectoryAtPath:cachePath attributes:nil];
+        [fileManager release];
+        
         feeds = [[NSMutableDictionary alloc] init];
         actionCount = 0;
         processingUpdates = [[NSMutableArray alloc] init];
@@ -95,8 +99,10 @@ volatile int    __fd_singletonLock = 0;
 {
     [cachePath release];
     cachePath = [value retain];
-    if( [[NSFileManager defaultManager] fileExistsAtPath:cachePath] == NO )
-        [[NSFileManager defaultManager] createDirectoryAtPath:cachePath attributes:nil];
+    NSFileManager* fileManager = [[NSFileManager alloc] init];
+    if( [fileManager fileExistsAtPath:cachePath] == NO )
+        [fileManager createDirectoryAtPath:cachePath attributes:nil];
+    [fileManager release];
     [feeds removeAllObjects];
     [self loadFeedMetadata];
 }
@@ -443,7 +449,9 @@ volatile int    __fd_singletonLock = 0;
 - (void) removeDataForFeed:(NSURL*)url
 {
     NSString* path = [cachePath stringByAppendingPathComponent:[self fileNameForURL:url]];
-    [[NSFileManager defaultManager] removeItemAtPath:path error:NULL];
+    NSFileManager* fileManager = [[NSFileManager alloc] init];
+    [fileManager removeItemAtPath:path error:NULL];
+    [fileManager release];
 }
 
 @end

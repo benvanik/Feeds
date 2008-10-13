@@ -144,7 +144,7 @@
 		8DC2EF5B0486A6940098B216 /* Feeds */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = folder; path = Feeds; sourceTree = BUILT_PRODUCTS_DIR; };
 		904CF6C50EA03F9600FC18DD /* FDCRC32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDCRC32.h; path = Classes/FDCRC32.h; sourceTree = "<group>"; };
 		904CF6C60EA03F9600FC18DD /* FDCRC32.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDCRC32.m; path = Classes/FDCRC32.m; sourceTree = "<group>"; };
-		90A520B40E9C34270056B159 /* libFeeds-iPhone-iphoneos.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libFeeds-iPhone-iphoneos.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		90A520B40E9C34270056B159 /* libFeeds-iPhone-iphonesimulator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libFeeds-iPhone-iphonesimulator.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A520B70E9C34520056B159 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		90A5211A0E9C352A0056B159 /* FDFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDFeed.h; path = Classes/FDFeed.h; sourceTree = "<group>"; };
 		90A5211B0E9C352A0056B159 /* FDFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDFeed.m; path = Classes/FDFeed.m; sourceTree = "<group>"; };
@@ -244,7 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				8DC2EF5B0486A6940098B216 /* Feeds */,
-				90A520B40E9C34270056B159 /* libFeeds-iPhone-iphoneos.a */,
+				90A520B40E9C34270056B159 /* libFeeds-iPhone-iphonesimulator.a */,
 				90CCE25A0E9C6E1100B51736 /* FeedsTest.octest */,
 			);
 			name = Products;
@@ -259,7 +259,6 @@
 				089C1665FE841158C02AAC07 /* Resources */,
 				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
 				034768DFFF38A50411DB9C8B /* Products */,
-				90CCE25B0E9C6E1100B51736 /* FeedsTest-Info.plist */,
 			);
 			name = Feeds;
 			sourceTree = "<group>";
@@ -278,6 +277,7 @@
 			children = (
 				8DC2EF5A0486A6940098B216 /* Info.plist */,
 				089C1666FE841158C02AAC07 /* InfoPlist.strings */,
+				90CCE25B0E9C6E1100B51736 /* FeedsTest-Info.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -509,7 +509,7 @@
 			);
 			name = "Feeds-iPhone";
 			productName = "Feeds-iPhone";
-			productReference = 90A520B40E9C34270056B159 /* libFeeds-iPhone-iphoneos.a */;
+			productReference = 90A520B40E9C34270056B159 /* libFeeds-iPhone-iphonesimulator.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		90CCE2590E9C6E1100B51736 /* FeedsTest */ = {
@@ -758,6 +758,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Feeds_Prefix.pch;
+				OTHER_CFLAGS = "-DFD_IPHONE";
 				PREBINDING = NO;
 				PRIVATE_HEADERS_FOLDER_PATH = FeedsPrivateHeaders;
 				PRODUCT_NAME = "Feeds-iPhone$(EFFECTIVE_PLATFORM_NAME)";
@@ -775,6 +776,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Feeds_Prefix.pch;
+				OTHER_CFLAGS = "-DFD_IPHONE";
 				PREBINDING = NO;
 				PRIVATE_HEADERS_FOLDER_PATH = FeedsPrivateHeaders;
 				PRODUCT_NAME = "Feeds-iPhone$(EFFECTIVE_PLATFORM_NAME)";
