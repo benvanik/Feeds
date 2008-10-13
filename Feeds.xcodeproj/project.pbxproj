@@ -144,7 +144,7 @@
 		8DC2EF5B0486A6940098B216 /* Feeds */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = folder; path = Feeds; sourceTree = BUILT_PRODUCTS_DIR; };
 		904CF6C50EA03F9600FC18DD /* FDCRC32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDCRC32.h; path = Classes/FDCRC32.h; sourceTree = "<group>"; };
 		904CF6C60EA03F9600FC18DD /* FDCRC32.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDCRC32.m; path = Classes/FDCRC32.m; sourceTree = "<group>"; };
-		90A520B40E9C34270056B159 /* libFeeds-iPhone-iphonesimulator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libFeeds-iPhone-iphonesimulator.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		90A520B40E9C34270056B159 /* libFeeds-iphonesimulator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libFeeds-iphonesimulator.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A520B70E9C34520056B159 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		90A5211A0E9C352A0056B159 /* FDFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDFeed.h; path = Classes/FDFeed.h; sourceTree = "<group>"; };
 		90A5211B0E9C352A0056B159 /* FDFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDFeed.m; path = Classes/FDFeed.m; sourceTree = "<group>"; };
@@ -244,7 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				8DC2EF5B0486A6940098B216 /* Feeds */,
-				90A520B40E9C34270056B159 /* libFeeds-iPhone-iphonesimulator.a */,
+				90A520B40E9C34270056B159 /* libFeeds-iphonesimulator.a */,
 				90CCE25A0E9C6E1100B51736 /* FeedsTest.octest */,
 			);
 			name = Products;
@@ -509,7 +509,7 @@
 			);
 			name = "Feeds-iPhone";
 			productName = "Feeds-iPhone";
-			productReference = 90A520B40E9C34270056B159 /* libFeeds-iPhone-iphonesimulator.a */;
+			productReference = 90A520B40E9C34270056B159 /* libFeeds-iphonesimulator.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		90CCE2590E9C6E1100B51736 /* FeedsTest */ = {
@@ -761,7 +761,7 @@
 				OTHER_CFLAGS = "-DFD_IPHONE";
 				PREBINDING = NO;
 				PRIVATE_HEADERS_FOLDER_PATH = FeedsPrivateHeaders;
-				PRODUCT_NAME = "Feeds-iPhone$(EFFECTIVE_PLATFORM_NAME)";
+				PRODUCT_NAME = "Feeds$(EFFECTIVE_PLATFORM_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = Feeds;
 				SDKROOT = iphoneos2.1;
 			};
@@ -779,7 +779,7 @@
 				OTHER_CFLAGS = "-DFD_IPHONE";
 				PREBINDING = NO;
 				PRIVATE_HEADERS_FOLDER_PATH = FeedsPrivateHeaders;
-				PRODUCT_NAME = "Feeds-iPhone$(EFFECTIVE_PLATFORM_NAME)";
+				PRODUCT_NAME = "Feeds$(EFFECTIVE_PLATFORM_NAME)";
 				PUBLIC_HEADERS_FOLDER_PATH = Feeds;
 				SDKROOT = iphoneos2.1;
 				ZERO_LINK = NO;
