@@ -17,8 +17,8 @@
 
 #define kDefaultSimultaneousUpdates 2
 
-FDFeedStore*    __fd_singletonStore = nil;
-volatile int    __fd_singletonLock = 0;
+volatile FDFeedStore*   __fd_singletonStore = nil;
+volatile int            __fd_singletonLock = 0;
 
 @implementation FDFeedStore
 
@@ -81,10 +81,10 @@ volatile int    __fd_singletonLock = 0;
     if( OSAtomicCompareAndSwapInt( 0, 1, &__fd_singletonLock ) == NO )
     {
         while( __fd_singletonStore == nil );
-        return __fd_singletonStore;
+        return ( FDFeedStore* )__fd_singletonStore;
     }
     __fd_singletonStore = [[FDFeedStore alloc] init];
-    return __fd_singletonStore;
+    return ( FDFeedStore* )__fd_singletonStore;
 }
 
 #pragma mark -

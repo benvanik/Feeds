@@ -87,7 +87,7 @@
 		90CCE1C70E9C65A000B51736 /* FDTitledURL+Implementation.h in Headers */ = {isa = PBXBuildFile; fileRef = 90CCE1C60E9C65A000B51736 /* FDTitledURL+Implementation.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		90CCE1C80E9C65A000B51736 /* FDTitledURL+Implementation.h in Headers */ = {isa = PBXBuildFile; fileRef = 90CCE1C60E9C65A000B51736 /* FDTitledURL+Implementation.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		90CCE2610E9C6E1D00B51736 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90CCE2600E9C6E1D00B51736 /* Cocoa.framework */; };
-		90CCE2730E9C6E6100B51736 /* Feeds in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* Feeds */; };
+		90CCE2730E9C6E6100B51736 /* Feeds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DC2EF5B0486A6940098B216 /* Feeds.framework */; };
 		90CCE2910E9C6F5900B51736 /* ModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 90CCE2900E9C6F5900B51736 /* ModelTests.m */; };
 		90CCE2960E9C6FC500B51736 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90CCE2950E9C6FC500B51736 /* SenTestingKit.framework */; };
 		90CCE2D50E9C7C2C00B51736 /* FDEntry.h in Headers */ = {isa = PBXBuildFile; fileRef = 90CCE2D40E9C7C2C00B51736 /* FDEntry.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -141,10 +141,10 @@
 		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		32DBCF5E0370ADEE00C91783 /* Feeds_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feeds_Prefix.pch; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8DC2EF5B0486A6940098B216 /* Feeds */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = folder; path = Feeds; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DC2EF5B0486A6940098B216 /* Feeds.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Feeds.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		904CF6C50EA03F9600FC18DD /* FDCRC32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDCRC32.h; path = Classes/FDCRC32.h; sourceTree = "<group>"; };
 		904CF6C60EA03F9600FC18DD /* FDCRC32.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDCRC32.m; path = Classes/FDCRC32.m; sourceTree = "<group>"; };
-		90A520B40E9C34270056B159 /* libFeeds-iphonesimulator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libFeeds-iphonesimulator.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		90A520B40E9C34270056B159 /* libFeeds-iphoneos.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libFeeds-iphoneos.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		90A520B70E9C34520056B159 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		90A5211A0E9C352A0056B159 /* FDFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDFeed.h; path = Classes/FDFeed.h; sourceTree = "<group>"; };
 		90A5211B0E9C352A0056B159 /* FDFeed.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDFeed.m; path = Classes/FDFeed.m; sourceTree = "<group>"; };
@@ -231,7 +231,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90CCE2730E9C6E6100B51736 /* Feeds in Frameworks */,
+				90CCE2730E9C6E6100B51736 /* Feeds.framework in Frameworks */,
 				90CCE2610E9C6E1D00B51736 /* Cocoa.framework in Frameworks */,
 				90CCE2960E9C6FC500B51736 /* SenTestingKit.framework in Frameworks */,
 			);
@@ -243,8 +243,8 @@
 		034768DFFF38A50411DB9C8B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8DC2EF5B0486A6940098B216 /* Feeds */,
-				90A520B40E9C34270056B159 /* libFeeds-iphonesimulator.a */,
+				8DC2EF5B0486A6940098B216 /* Feeds.framework */,
+				90A520B40E9C34270056B159 /* libFeeds-iphoneos.a */,
 				90CCE25A0E9C6E1100B51736 /* FeedsTest.octest */,
 			);
 			name = Products;
@@ -492,7 +492,7 @@
 			name = Feeds;
 			productInstallPath = "$(HOME)/Library/Frameworks";
 			productName = Feeds;
-			productReference = 8DC2EF5B0486A6940098B216 /* Feeds */;
+			productReference = 8DC2EF5B0486A6940098B216 /* Feeds.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		90A520B30E9C34270056B159 /* Feeds-iPhone */ = {
@@ -509,7 +509,7 @@
 			);
 			name = "Feeds-iPhone";
 			productName = "Feeds-iPhone";
-			productReference = 90A520B40E9C34270056B159 /* libFeeds-iphonesimulator.a */;
+			productReference = 90A520B40E9C34270056B159 /* libFeeds-iphoneos.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		90CCE2590E9C6E1100B51736 /* FeedsTest */ = {
