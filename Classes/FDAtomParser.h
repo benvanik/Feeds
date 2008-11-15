@@ -17,7 +17,7 @@
     NSXMLParser*    xml;
 }
 
-- (id) initWithData:(NSData*)data;
+- (id) initWithData:(NSData*)data andCustomNamespaces:(NSArray*)namespaces;
 
 - (FDFeed*) parseFeed;
 

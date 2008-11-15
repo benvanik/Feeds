@@ -16,6 +16,7 @@
 - (void) setLink:(NSURL*)value;
 - (void) setPublicationDate:(NSDate*)value;
 - (void) setImage:(FDImage*)value;
+- (void) setCustomElements:(NSArray*)value;
 - (void) setCategories:(NSArray*)value;
 - (void) setEntries:(NSArray*)value;
 

@@ -11,6 +11,7 @@
 #import "FDEntry+Implementation.h"
 #import "FDCategory+Implementation.h"
 #import "FDImage+Implementation.h"
+#import "FDCustomElement+Implementation.h"
 #import "FDParser.h"
 
 @implementation FDFeed
@@ -20,6 +21,7 @@
 @synthesize link;
 @synthesize publicationDate;
 @synthesize image;
+@synthesize customElements;
 @synthesize categories;
 @synthesize entries;
 
@@ -32,6 +34,7 @@
         link = nil;
         publicationDate = nil;
         image = nil;
+        customElements = nil;
         categories = nil;
         entries = nil;
     }
@@ -50,6 +53,8 @@
     publicationDate = nil;
     [image release];
     image = nil;
+    [customElements release];
+    customElements = nil;
     [categories release];
     categories = nil;
     [entries release];
@@ -70,6 +75,7 @@ FD_SETTER( Description,         description,        NSString*           );
 FD_SETTER( Link,                link,               NSURL*              );
 FD_SETTER( PublicationDate,     publicationDate,    NSDate*             );
 FD_SETTER( Image,               image,              FDImage*            );
+FD_SETTER( CustomElements,      customElements,     NSArray*            );
 FD_SETTER( Categories,          categories,         NSArray*            );
 FD_SETTER( Entries,             entries,            NSArray*            );
 
@@ -77,6 +83,11 @@ FD_SETTER( Entries,             entries,            NSArray*            );
 #pragma mark Creation Helpers
 
 + (FDFeed*) feedWithContentsOfFile:(NSString*)path
+{
+    return [FDFeed feedWithContentsOfFile:path withCustomNamespaces:nil];
+}
+
++ (FDFeed*) feedWithContentsOfFile:(NSString*)path withCustomNamespaces:(NSArray*)namespaces
 {
     if( ( path == nil ) || ( [path length] == 0 ) )
     {
@@ -95,12 +106,17 @@ FD_SETTER( Entries,             entries,            NSArray*            );
         return nil;
     }
     
-    FDFeed* feed = [FDFeed feedWithData:data];
+    FDFeed* feed = [FDFeed feedWithData:data withCustomNamespaces:namespaces];
     [data release];
     return feed;
 }
 
 + (FDFeed*) feedWithContentsOfURL:(NSURL*)url
+{
+    return [FDFeed feedWithContentsOfURL:url withCustomNamespaces:nil];
+}
+
++ (FDFeed*) feedWithContentsOfURL:(NSURL*)url withCustomNamespaces:(NSArray*)namespaces
 {
     if( url == nil )
     {
@@ -119,12 +135,17 @@ FD_SETTER( Entries,             entries,            NSArray*            );
         return nil;
     }
     
-    FDFeed* feed = [FDFeed feedWithData:data];
+    FDFeed* feed = [FDFeed feedWithData:data withCustomNamespaces:namespaces];
     [data release];
     return feed;
 }
 
 + (FDFeed*) feedWithData:(NSData*)data
+{
+    return [FDFeed feedWithData:data withCustomNamespaces:nil];
+}
+
++ (FDFeed*) feedWithData:(NSData*)data withCustomNamespaces:(NSArray*)namespaces
 {
     if( ( data == nil ) || ( [data length] == 0 ) )
     {
@@ -137,7 +158,7 @@ FD_SETTER( Entries,             entries,            NSArray*            );
     NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
     FDFeed* feed = nil;
     
-    FDParser* parser = [FDParser parserWithData:data];
+    FDParser* parser = [FDParser parserWithData:data andCustomNamespaces:namespaces];
     if( parser != nil )
         feed = [[parser parseFeed] retain];
     
@@ -184,27 +205,29 @@ FD_SETTER( Entries,             entries,            NSArray*            );
     NSMutableArray* presentLocalEntries = [[NSMutableArray alloc] initWithArray:entries];
     for( FDEntry* entry in [otherFeed entries] )
     {
-        // If no permanentID, always consider new
+        // Lookup existing
         FDEntry* presentEntry = ( [entry permanentID] == nil ) ? nil : [localEntries objectForKey:[entry permanentID]];
-        if( presentEntry == nil )
+        
+        // Instead of copying everything, just serialize/deserialize
+        FDEntry* newEntry = [FDEntry entryWithContentsOfPropertyList:[entry propertyList]];
+        // Have to fix categories to our local instances
+        NSMutableArray* entryCategories = [NSMutableArray arrayWithCapacity:[[entry categories] count]];
+        for( FDCategory* category in [entry categories] )
         {
-            // New entry
-            // Instead of copying everything, just serialize/deserialize
-            FDEntry* newEntry = [FDEntry entryWithContentsOfPropertyList:[entry propertyList]];
-            // Have to fix categories to our local instances
-            NSMutableArray* entryCategories = [NSMutableArray arrayWithCapacity:[[entry categories] count]];
-            for( FDCategory* category in [entry categories] )
-            {
-                FDCategory* localCategory = [localCategories objectForKey:[category label]];
-                [entryCategories addObject:localCategory];
-            }
-            [newEntry setCategories:entryCategories];
-            if( [newEntry permanentID] != nil )
-                [localEntries setObject:newEntry forKey:[newEntry permanentID]];
-            else
-                [untrackableEntries addObject:newEntry];
-            contentsChanged = YES;
+            FDCategory* localCategory = [localCategories objectForKey:[category label]];
+            [entryCategories addObject:localCategory];
         }
+        [newEntry setCategories:entryCategories];
+        
+        // Replace our local entry with the remote one (if not new) - assuming that we want the latest version, if things have changed
+        if( [newEntry permanentID] != nil )
+            [localEntries setObject:newEntry forKey:[newEntry permanentID]];
+        else
+            [untrackableEntries addObject:newEntry];
+        
+        // If no permanentID, always consider new
+        if( presentEntry == nil )
+            contentsChanged = YES;
         else
             [presentLocalEntries removeObject:presentEntry];
     }
@@ -261,6 +284,14 @@ FD_SETTER( Entries,             entries,            NSArray*            );
         [feed setLink:[NSURL URLWithString:[plist objectForKey:@"link"]]];
     [feed setPublicationDate:[plist objectForKey:@"publicationDate"]];
     [feed setImage:[FDImage imageWithContentsOfPropertyList:[plist objectForKey:@"image"]]];
+    NSArray* customElementsPlist = [plist objectForKey:@"customElements"];
+    if( customElementsPlist != nil )
+    {
+        NSMutableArray* customElements = [NSMutableArray arrayWithCapacity:[customElementsPlist count]];
+        for( NSDictionary* customElementPlist in customElementsPlist )
+            [customElements addObject:[FDCustomElement customElementWithContentsOfPropertyList:customElementPlist]];
+        [feed setCustomElements:customElements];
+    }
     NSArray* categoriesPlist = [plist objectForKey:@"categories"];
     if( categoriesPlist != nil )
     {
@@ -282,6 +313,9 @@ FD_SETTER( Entries,             entries,            NSArray*            );
 
 - (NSDictionary*) propertyList
 {
+    NSMutableArray* customElementsPlist = [NSMutableArray arrayWithCapacity:[customElements count]];
+    for( FDCustomElement* element in customElements )
+        [customElementsPlist addObject:[element propertyList]];
     NSMutableArray* categoriesPlist = [NSMutableArray arrayWithCapacity:[categories count]];
     for( FDCategory* category in categories )
         [categoriesPlist addObject:[category propertyList]];
@@ -300,6 +334,8 @@ FD_SETTER( Entries,             entries,            NSArray*            );
         [plist setObject:publicationDate forKey:@"publicationDate"];
     if( image != nil )
         [plist setObject:[image propertyList] forKey:@"image"];
+    if( [customElements count] > 0 )
+        [plist setObject:customElementsPlist forKey:@"customElements"];
     if( [categories count] > 0 )
         [plist setObject:categoriesPlist forKey:@"categories"];
     if( [entries count] > 0 )

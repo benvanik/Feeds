@@ -14,13 +14,14 @@
 #import "FDEmailAddress+Implementation.h"
 #import "FDTitledURL+Implementation.h"
 #import "FDImage+Implementation.h"
+#import "FDCustomElement+Implementation.h"
 
 @implementation FDRSS2Parser
 
 #pragma mark -
 #pragma mark Initialization
 
-- (id) initWithData:(NSData*)data
+- (id) initWithData:(NSData*)data andCustomNamespaces:(NSArray*)namespaces
 {
     if( self = [super init] )
     {
@@ -29,6 +30,8 @@
         [xml setShouldProcessNamespaces:NO];
         [xml setShouldReportNamespacePrefixes:NO];
         [xml setShouldResolveExternalEntities:NO];
+        
+        customNamepaces = [namespaces retain];
 
         // Sun, 29 Jan 2006 05:00:00 GMT
         dateFormatter = [[NSDateFormatter alloc] init];
@@ -42,13 +45,17 @@
     // NOTE: these should already be cleaned up, but if we errored they may not be
     [feed release];
     [image release];
+    [customElements release];
     [entry release];
     [categories release];
     [entries release];
     [entryCategories release];
     [entryEnclosures release];
+    [entryCustomElements release];
     [attributes release];
     [text release];
+    
+    [customNamepaces release];
     
     [dateFormatter release];
     dateFormatter = nil;
@@ -81,6 +88,7 @@
     {
         state = FDRSS2InChannel;
         feed = [[FDFeed alloc] init];
+        customElements = [[NSMutableArray alloc] init];
         categories = [[NSMutableDictionary alloc] init];
         entries = [[NSMutableArray alloc] init];
     }
@@ -100,6 +108,7 @@
             entry = [[FDEntry alloc] init];
             entryCategories = [[NSMutableArray alloc] init];
             entryEnclosures = [[NSMutableArray alloc] init];
+            entryCustomElements = [[NSMutableArray alloc] init];
         }
         else if( [elementName isEqualToString:@"textInput"] == YES )
         {
@@ -129,11 +138,14 @@
     {
         if( [elementName isEqualToString:@"channel"] == YES )
         {
+            [feed setCustomElements:customElements];
             NSMutableArray* allCategories = [[NSMutableArray alloc] initWithArray:[categories allValues]];
             // TODO: sort categories
             [feed setCategories:allCategories];
             // TODO: sort entries
             [feed setEntries:entries];
+            [customElements release];
+            customElements = nil;
             [categories release];
             categories = nil;
             [entries release];
@@ -154,6 +166,24 @@
         else if( [elementName isEqualToString:@"pubDate"] == YES )
         {
             [feed setPublicationDate:[dateFormatter dateFromString:fixedText]];
+        }
+        else
+        {
+            // Check for custom stuff
+            NSInteger colon = [elementName rangeOfString:@":"].location;
+            if( colon != NSNotFound )
+            {
+                NSString* namespace = [elementName substringToIndex:colon];
+                BOOL registered = [customNamepaces containsObject:namespace];
+                if( registered == YES )
+                {
+                    FDCustomElement* element = [[FDCustomElement alloc] initWithLocalName:[elementName substringFromIndex:colon + 1] inNamespace:namespace withAttributes:attributes];
+                    if( [fixedText length] > 0 )
+                        [element setText:fixedText];
+                    [customElements addObject:element];
+                    [element release];
+                }
+            }
         }
     }
     else if( state == FDRSS2InChannelImage )
@@ -186,11 +216,14 @@
             // TODO: sort entryCategories
             [entry setCategories:entryCategories];
             [entry setEnclosures:entryEnclosures];
+            [entry setCustomElements:entryCustomElements];
             [entries addObject:entry];
             [entryCategories release];
             entryCategories = nil;
             [entryEnclosures release];
             entryEnclosures = nil;
+            [entryCustomElements release];
+            entryCustomElements = nil;
             [entry release];
             entry = nil;
         }
@@ -266,6 +299,24 @@
                                                             andLength:[[attributes objectForKey:@"length"] integerValue]];
             [entryEnclosures addObject:enclosure];
             [enclosure release];
+        }
+        else
+        {
+            // Check for custom stuff
+            NSInteger colon = [elementName rangeOfString:@":"].location;
+            if( colon != NSNotFound )
+            {
+                NSString* namespace = [elementName substringToIndex:colon];
+                BOOL registered = [customNamepaces containsObject:namespace];
+                if( registered == YES )
+                {
+                    FDCustomElement* element = [[FDCustomElement alloc] initWithLocalName:[elementName substringFromIndex:colon + 1] inNamespace:namespace withAttributes:attributes];
+                    if( [fixedText length] > 0 )
+                        [element setText:fixedText];
+                    [entryCustomElements addObject:element];
+                    [element release];
+                }
+            }
         }
     }
     else if( state == FDRSS2InTextInput )

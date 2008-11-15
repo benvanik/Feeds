@@ -25,6 +25,7 @@
     FDEmailAddress* author;
     FDTitledURL*    source;
     NSArray*        enclosures;
+    NSArray*        customElements;
 }
 
 /**
@@ -71,5 +72,10 @@
  * The optional list of media enclosures in the order they appear in the feed.
  */
 @property (nonatomic, readonly) NSArray* enclosures;
+
+/**
+ * A list of custom elements parsed, if any.
+ */
+@property (nonatomic, readonly) NSArray* customElements;
 
 @end

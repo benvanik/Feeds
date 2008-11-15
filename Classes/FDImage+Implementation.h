@@ -35,5 +35,4 @@
  */
 - (NSDictionary*) propertyList;
 
-
 @end

@@ -12,6 +12,7 @@
 #import "FDEmailAddress+Implementation.h"
 #import "FDTitledURL+Implementation.h"
 #import "FDEnclosure+Implementation.h"
+#import "FDCustomElement+Implementation.h"
 
 @implementation FDEntry
 
@@ -24,6 +25,7 @@
 @synthesize author;
 @synthesize source;
 @synthesize enclosures;
+@synthesize customElements;
 
 #pragma mark -
 #pragma mark Initialization
@@ -41,6 +43,7 @@
         author = nil;
         source = nil;
         enclosures = nil;
+        customElements = nil;
     }
     return self;
 }
@@ -65,6 +68,8 @@
     source = nil;
     [enclosures release];
     enclosures = nil;
+    [customElements release];
+    customElements = nil;
     [super dealloc];
 }
 
@@ -85,6 +90,7 @@ FD_SETTER( Categories,          categories,         NSArray*            );
 FD_SETTER( Author,              author,             FDEmailAddress*     );
 FD_SETTER( Source,              source,             FDTitledURL*        );
 FD_SETTER( Enclosures,          enclosures,         NSArray*            );
+FD_SETTER( CustomElements,      customElements,     NSArray*            );
 
 #pragma mark -
 #pragma mark Serialization
@@ -118,6 +124,14 @@ FD_SETTER( Enclosures,          enclosures,         NSArray*            );
             [enclosures addObject:[FDEnclosure enclosureWithContentsOfPropertyList:enclosurePlist]];
         [entry setEnclosures:enclosures];
     }
+    NSArray* customElementsPlist = [plist objectForKey:@"customElements"];
+    if( customElementsPlist != nil )
+    {
+        NSMutableArray* customElements = [NSMutableArray arrayWithCapacity:[customElementsPlist count]];
+        for( NSDictionary* customElementPlist in customElementsPlist )
+            [customElements addObject:[FDCustomElement customElementWithContentsOfPropertyList:customElementPlist]];
+        [entry setCustomElements:customElements];
+    }
     return [entry autorelease];
 }
 
@@ -129,6 +143,9 @@ FD_SETTER( Enclosures,          enclosures,         NSArray*            );
     NSMutableArray* enclosuresPlist = [NSMutableArray arrayWithCapacity:[enclosures count]];
     for( FDEnclosure* enclosure in enclosures )
         [enclosuresPlist addObject:[enclosure propertyList]];
+    NSMutableArray* customElementsPlist = [NSMutableArray arrayWithCapacity:[customElements count]];
+    for( FDCustomElement* element in customElements )
+        [customElementsPlist addObject:[element propertyList]];
     NSMutableDictionary* plist = [NSMutableDictionary dictionary];
     if( permanentID != nil )
         [plist setObject:permanentID forKey:@"permanentID"];
@@ -148,6 +165,8 @@ FD_SETTER( Enclosures,          enclosures,         NSArray*            );
         [plist setObject:[source propertyList] forKey:@"source"];
     if( [enclosures count] > 0 )
         [plist setObject:enclosuresPlist forKey:@"enclosures"];
+    if( [customElements count] > 0 )
+        [plist setObject:customElementsPlist forKey:@"customElements"];
     return plist;
 }
 

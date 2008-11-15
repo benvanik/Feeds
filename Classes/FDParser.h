@@ -13,7 +13,7 @@
 @interface FDParser : NSObject {
 }
 
-+ (FDParser*) parserWithData:(NSData*)data;
++ (FDParser*) parserWithData:(NSData*)data andCustomNamespaces:(NSArray*)namespaces;
 
 - (FDFeed*) parseFeed;
 

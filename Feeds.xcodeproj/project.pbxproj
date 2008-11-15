@@ -23,6 +23,12 @@
 /* Begin PBXBuildFile section */
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
+		9022294E0ECEB69500DEEE42 /* FDCustomElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 9022294C0ECEB69500DEEE42 /* FDCustomElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9022294F0ECEB69500DEEE42 /* FDCustomElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 9022294D0ECEB69500DEEE42 /* FDCustomElement.m */; };
+		902229500ECEB69500DEEE42 /* FDCustomElement.h in Headers */ = {isa = PBXBuildFile; fileRef = 9022294C0ECEB69500DEEE42 /* FDCustomElement.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		902229510ECEB69500DEEE42 /* FDCustomElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 9022294D0ECEB69500DEEE42 /* FDCustomElement.m */; };
+		902229770ECEB72200DEEE42 /* FDCustomElement+Implementation.h in Headers */ = {isa = PBXBuildFile; fileRef = 902229750ECEB72200DEEE42 /* FDCustomElement+Implementation.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		902229790ECEB72200DEEE42 /* FDCustomElement+Implementation.h in Headers */ = {isa = PBXBuildFile; fileRef = 902229750ECEB72200DEEE42 /* FDCustomElement+Implementation.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		904CF6C70EA03F9600FC18DD /* FDCRC32.h in Headers */ = {isa = PBXBuildFile; fileRef = 904CF6C50EA03F9600FC18DD /* FDCRC32.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		904CF6C80EA03F9600FC18DD /* FDCRC32.m in Sources */ = {isa = PBXBuildFile; fileRef = 904CF6C60EA03F9600FC18DD /* FDCRC32.m */; };
 		904CF6C90EA03F9600FC18DD /* FDCRC32.h in Headers */ = {isa = PBXBuildFile; fileRef = 904CF6C50EA03F9600FC18DD /* FDCRC32.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -142,6 +148,9 @@
 		32DBCF5E0370ADEE00C91783 /* Feeds_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Feeds_Prefix.pch; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* Feeds.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Feeds.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9022294C0ECEB69500DEEE42 /* FDCustomElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDCustomElement.h; path = Classes/FDCustomElement.h; sourceTree = "<group>"; };
+		9022294D0ECEB69500DEEE42 /* FDCustomElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDCustomElement.m; path = Classes/FDCustomElement.m; sourceTree = "<group>"; };
+		902229750ECEB72200DEEE42 /* FDCustomElement+Implementation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "FDCustomElement+Implementation.h"; path = "Classes/FDCustomElement+Implementation.h"; sourceTree = "<group>"; };
 		904CF6C50EA03F9600FC18DD /* FDCRC32.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDCRC32.h; path = Classes/FDCRC32.h; sourceTree = "<group>"; };
 		904CF6C60EA03F9600FC18DD /* FDCRC32.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDCRC32.m; path = Classes/FDCRC32.m; sourceTree = "<group>"; };
 		90A520B40E9C34270056B159 /* libFeeds-iphoneos.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libFeeds-iphoneos.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -310,6 +319,9 @@
 				90A521A10E9C4CD90056B159 /* FDImage.m */,
 				904CF6C50EA03F9600FC18DD /* FDCRC32.h */,
 				904CF6C60EA03F9600FC18DD /* FDCRC32.m */,
+				9022294C0ECEB69500DEEE42 /* FDCustomElement.h */,
+				902229750ECEB72200DEEE42 /* FDCustomElement+Implementation.h */,
+				9022294D0ECEB69500DEEE42 /* FDCustomElement.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -435,6 +447,8 @@
 				90CCE9A60E9D654C00B51736 /* FDFeedInfo+Implementation.h in Headers */,
 				90CCEA5E0E9DD6AE00B51736 /* FDFeedUpdateAction.h in Headers */,
 				904CF6C70EA03F9600FC18DD /* FDCRC32.h in Headers */,
+				9022294E0ECEB69500DEEE42 /* FDCustomElement.h in Headers */,
+				902229770ECEB72200DEEE42 /* FDCustomElement+Implementation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +484,8 @@
 				90CCE9A80E9D654C00B51736 /* FDFeedInfo+Implementation.h in Headers */,
 				90CCEA600E9DD6AE00B51736 /* FDFeedUpdateAction.h in Headers */,
 				904CF6C90EA03F9600FC18DD /* FDCRC32.h in Headers */,
+				902229500ECEB69500DEEE42 /* FDCustomElement.h in Headers */,
+				902229790ECEB72200DEEE42 /* FDCustomElement+Implementation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,6 +636,7 @@
 				90CCE96C0E9D60B800B51736 /* FDFeedInfo.m in Sources */,
 				90CCEA5F0E9DD6AE00B51736 /* FDFeedUpdateAction.m in Sources */,
 				904CF6C80EA03F9600FC18DD /* FDCRC32.m in Sources */,
+				9022294F0ECEB69500DEEE42 /* FDCustomElement.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -643,6 +660,7 @@
 				90CCE96E0E9D60B800B51736 /* FDFeedInfo.m in Sources */,
 				90CCEA610E9DD6AE00B51736 /* FDFeedUpdateAction.m in Sources */,
 				904CF6CA0EA03F9600FC18DD /* FDCRC32.m in Sources */,
+				902229510ECEB69500DEEE42 /* FDCustomElement.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,6 +16,7 @@
  * A simple feed storage and update manager.
  */
 @interface FDFeedStore : NSObject {
+    NSArray*                customNamespaces;
     BOOL                    removeMissingEntries;
     NSLock*                 dataLock;
     NSLock*                 queueLock;
@@ -27,6 +28,11 @@
     NSInteger               simultaneousUpdates;
     volatile NSInteger      currentWorkerCount;
 }
+
+/**
+ * The list of custom namespaces recognized during feed parsing.
+ */
+@property (retain) NSArray* customNamespaces;
 
 /**
  * If set updates will remove existing entries not in the newly fetched feed.

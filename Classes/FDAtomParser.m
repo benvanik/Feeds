@@ -13,7 +13,7 @@
 #pragma mark -
 #pragma mark Initialization
 
-- (id) initWithData:(NSData*)data
+- (id) initWithData:(NSData*)data andCustomNamespaces:(NSArray*)namespaces
 {
     if( self = [super init] )
     {

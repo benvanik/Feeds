@@ -30,7 +30,7 @@
 #pragma mark -
 #pragma mark Creation Helpers
 
-+ (FDParser*) parserWithData:(NSData*)data
++ (FDParser*) parserWithData:(NSData*)data andCustomNamespaces:(NSArray*)namespaces
 {
     if( ( data == nil ) || ( [data length] == 0 ) )
     {
@@ -49,7 +49,7 @@
         return nil;
     }
     
-    return [[[detectedType alloc] initWithData:data] autorelease];
+    return [[[detectedType alloc] initWithData:data andCustomNamespaces:namespaces] autorelease];
 }
 
 #pragma mark -

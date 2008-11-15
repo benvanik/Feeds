@@ -22,6 +22,7 @@ volatile int            __fd_singletonLock = 0;
 
 @implementation FDFeedStore
 
+@synthesize customNamespaces;
 @synthesize removeMissingEntries;
 @synthesize cachePath;
 @synthesize simultaneousUpdates;
@@ -45,6 +46,7 @@ volatile int            __fd_singletonLock = 0;
             [fileManager createDirectoryAtPath:cachePath attributes:nil];
         [fileManager release];
         
+        customNamespaces = nil;
         feeds = [[NSMutableDictionary alloc] init];
         actionCount = 0;
         processingUpdates = [[NSMutableArray alloc] init];
@@ -61,6 +63,8 @@ volatile int            __fd_singletonLock = 0;
 
 - (void) dealloc
 {
+    [customNamespaces release];
+    customNamespaces = nil;
     [pendingUpdates release];
     pendingUpdates = nil;
     [processingUpdates release];
@@ -128,7 +132,7 @@ volatile int            __fd_singletonLock = 0;
 
 - (FDFeedInfo*) addFeed:(NSURL*)url withData:(NSData*)data
 {
-    FDFeed* feed = [FDFeed feedWithData:data];
+    FDFeed* feed = [FDFeed feedWithData:data withCustomNamespaces:customNamespaces];
     NSDictionary* plist = [feed propertyList];
     
     [dataLock lock];
@@ -322,7 +326,7 @@ volatile int            __fd_singletonLock = 0;
     FDFeed* feed = nil;
     @try
     {
-        feed = [FDFeed feedWithData:data];
+        feed = [FDFeed feedWithData:data withCustomNamespaces:customNamespaces];
     }
     @catch( NSException* ex )
     {

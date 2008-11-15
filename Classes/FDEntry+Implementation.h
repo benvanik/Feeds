@@ -20,6 +20,7 @@
 - (void) setAuthor:(FDEmailAddress*)value;
 - (void) setSource:(FDTitledURL*)value;
 - (void) setEnclosures:(NSArray*)value;
+- (void) setCustomElements:(NSArray*)value;
 
 /**
  * Creates and returns an entry with the contents of the given property list.

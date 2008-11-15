@@ -11,6 +11,7 @@
 
 @class FDFeed;
 @class FDImage;
+@class FDCustomElement;
 @class FDEntry;
 
 enum {
@@ -27,22 +28,25 @@ typedef NSInteger FDRSS2State;
  */
 @interface FDRSS2Parser : FDParser {
     NSXMLParser*            xml;
+    NSArray*                customNamepaces;
     FDRSS2State             state;
     
     FDFeed*                 feed;
     FDImage*                image;
+    NSMutableArray*         customElements;
     FDEntry*                entry;
     NSMutableDictionary*    categories;
     NSMutableArray*         entries;
     NSMutableArray*         entryCategories;
     NSMutableArray*         entryEnclosures;
+    NSMutableArray*         entryCustomElements;
     
     NSDateFormatter*        dateFormatter;
     NSDictionary*           attributes;
     NSMutableString*        text;
 }
 
-- (id) initWithData:(NSData*)data;
+- (id) initWithData:(NSData*)data andCustomNamespaces:(NSArray*)namespaces;
 
 - (FDFeed*) parseFeed;
 

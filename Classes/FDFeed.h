@@ -19,6 +19,7 @@
     NSURL*          link;
     NSDate*         publicationDate;
     FDImage*        image;
+    NSArray*        customElements;
     NSArray*        categories;
     NSArray*        entries;
 }
@@ -49,6 +50,11 @@
 @property (nonatomic, readonly) FDImage* image;
 
 /**
+ * A list of custom elements parsed, if any.
+ */
+@property (nonatomic, readonly) NSArray* customElements;
+
+/**
  * A list of categories referenced by this feed.
  */
 @property (nonatomic, readonly) NSArray* categories;
@@ -65,16 +71,37 @@
 + (FDFeed*) feedWithContentsOfFile:(NSString*)path;
 
 /**
+ * Creates and returns a feed with the contents of the file at the given path.
+ * @param path The absolute path of the file from which to read data.
+ * @param namespaces A list of custom namespaces to parse.
+ */
++ (FDFeed*) feedWithContentsOfFile:(NSString*)path withCustomNamespaces:(NSArray*)namespaces;
+
+/**
  * Creates and returns a feed with the contents of the file at the given URL.
  * @param url The URL from which to read data.
  */
 + (FDFeed*) feedWithContentsOfURL:(NSURL*)url;
 
 /**
+ * Creates and returns a feed with the contents of the file at the given URL.
+ * @param url The URL from which to read data.
+ * @param namespaces A list of custom namespaces to parse.
+ */
++ (FDFeed*) feedWithContentsOfURL:(NSURL*)url withCustomNamespaces:(NSArray*)namespaces;
+
+/**
  * Creates and returns a feed with the contents of the given data.
  * @param data The data from which to read.
  */
 + (FDFeed*) feedWithData:(NSData*)data;
+
+/**
+ * Creates and returns a feed with the contents of the given data.
+ * @param data The data from which to read.
+ * @param namespaces A list of custom namespaces to parse.
+ */
++ (FDFeed*) feedWithData:(NSData*)data withCustomNamespaces:(NSArray*)namespaces;
 
 /**
  * Merges the unique contents of the given feed into this feed.
