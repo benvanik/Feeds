@@ -22,7 +22,7 @@
 {
     FDFeed* feed1 = [FDFeed feedWithContentsOfURL:[NSURL URLWithString:@"http://www.rssboard.org/files/rss-2.0-sample.xml"]];
     FDFeed* feed2 = [FDFeed feedWithContentsOfURL:[NSURL URLWithString:@"http://feeds.rssboard.org/rssboard"]];
-    BOOL anyDiffer = [feed1 addNewItemsFromFeed:feed2];
+    BOOL anyDiffer = [feed1 addNewItemsFromFeed:feed2 removeMissingEntries:YES];
     STAssertTrue( anyDiffer, @"Something should have differed" );
 }
 
@@ -30,7 +30,7 @@
 {
     FDFeed* feed1 = [FDFeed feedWithContentsOfURL:[NSURL URLWithString:@"http://www.rssboard.org/files/rss-2.0-sample.xml"]];
     FDFeed* feed2 = [FDFeed feedWithContentsOfURL:[NSURL URLWithString:@"http://www.rssboard.org/files/rss-2.0-sample.xml"]];
-    BOOL anyDiffer = [feed1 addNewItemsFromFeed:feed2];
+    BOOL anyDiffer = [feed1 addNewItemsFromFeed:feed2 removeMissingEntries:YES];
     STAssertFalse( anyDiffer, @"Nothing should have changed" );
 }
 

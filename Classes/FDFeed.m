@@ -169,14 +169,23 @@ FD_SETTER( Entries,             entries,            NSArray*            );
         }
     }
     
+    // NOTE: if an entry has no permanentID, we ignore it entirely and let it pass through to the new world or add it as if it were new
+    NSMutableArray* untrackableEntries = [[NSMutableArray alloc] init];
+    
     // Merge entries
     NSMutableDictionary* localEntries = [[NSMutableDictionary alloc] initWithCapacity:[entries count] + 5];
     for( FDEntry* entry in entries )
-        [localEntries setObject:entry forKey:[entry permanentID]];
+    {
+        if( [entry permanentID] != nil )
+            [localEntries setObject:entry forKey:[entry permanentID]];
+        else
+            [untrackableEntries addObject:entry];
+    }
     NSMutableArray* presentLocalEntries = [[NSMutableArray alloc] initWithArray:entries];
     for( FDEntry* entry in [otherFeed entries] )
     {
-        FDEntry* presentEntry = [localEntries objectForKey:[entry permanentID]];
+        // If no permanentID, always consider new
+        FDEntry* presentEntry = ( [entry permanentID] == nil ) ? nil : [localEntries objectForKey:[entry permanentID]];
         if( presentEntry == nil )
         {
             // New entry
@@ -190,7 +199,10 @@ FD_SETTER( Entries,             entries,            NSArray*            );
                 [entryCategories addObject:localCategory];
             }
             [newEntry setCategories:entryCategories];
-            [localEntries setObject:newEntry forKey:[newEntry permanentID]];
+            if( [newEntry permanentID] != nil )
+                [localEntries setObject:newEntry forKey:[newEntry permanentID]];
+            else
+                [untrackableEntries addObject:newEntry];
             contentsChanged = YES;
         }
         else
@@ -201,7 +213,10 @@ FD_SETTER( Entries,             entries,            NSArray*            );
     {
         // Remove the entries
         for( FDEntry* entry in presentLocalEntries )
-            [localEntries removeObjectForKey:[entry permanentID]];
+        {
+            if( [entry permanentID] != nil )
+                [localEntries removeObjectForKey:[entry permanentID]];
+        }
         contentsChanged = YES;
     }
     [presentLocalEntries release];
@@ -210,11 +225,17 @@ FD_SETTER( Entries,             entries,            NSArray*            );
 
     // TODO: sort categories/entries
     NSArray* updatedCategories = [localCategories allValues];
-    NSArray* updatedEntries = [localEntries allValues];
+    NSArray* updatedEntries = [[localEntries allValues] arrayByAddingObjectsFromArray:untrackableEntries];
+    
+    [untrackableEntries release];
     
     // Update members
     if( contentsChanged == YES )
     {
+        // Odd cases when removing all items
+        if( [updatedEntries count] == 0 )
+            updatedCategories = [NSArray array];
+        
         [categories release];
         categories = [updatedCategories retain];
         [entries release];

@@ -196,11 +196,14 @@
         }
         else if( [elementName isEqualToString:@"guid"] == YES )
         {
-            id isPermaLinkValue = [attributes objectForKey:@"isPermaLink"];
-            BOOL isPermaLink = ( isPermaLinkValue == nil ) || ( [isPermaLinkValue boolValue] == YES );
-            if( isPermaLink == YES )
-                [entry setLink:[NSURL URLWithString:fixedText]];
-            [entry setPermanentID:fixedText];
+            if( [fixedText length] > 0 )
+            {
+                id isPermaLinkValue = [attributes objectForKey:@"isPermaLink"];
+                BOOL isPermaLink = ( isPermaLinkValue == nil ) || ( [isPermaLinkValue boolValue] == YES );
+                if( isPermaLink == YES )
+                    [entry setLink:[NSURL URLWithString:fixedText]];
+                [entry setPermanentID:fixedText];
+            }
         }
         else if( [elementName isEqualToString:@"title"] == YES )
         {
