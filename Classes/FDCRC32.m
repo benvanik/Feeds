@@ -96,9 +96,16 @@ uint __fd_crc32( char* data, int length )
 
 + (uint) checksumOfString:(NSString*)string
 {
-    NSUInteger length = [string lengthOfBytesUsingEncoding:NSASCIIStringEncoding];
-    char* stringPtr = ( char* )[string cStringUsingEncoding:NSASCIIStringEncoding];
-    return __fd_crc32( stringPtr, length );
+    char cstringBuffer[ 1024 ];
+    char* cstring = ( char* )CFStringGetCStringPtr( ( CFStringRef )string, kCFStringEncodingASCII );
+    if( cstring == NULL )
+    {
+        CFStringGetCString( ( CFStringRef )string, cstringBuffer, 1024, kCFStringEncodingASCII );
+        cstring = cstringBuffer;
+    }
+    NSInteger length = MIN( 1024, strlen( cstring ) );
+    
+    return __fd_crc32( cstring, length );
 }
 
 @end
