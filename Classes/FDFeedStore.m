@@ -458,4 +458,12 @@ volatile int            __fd_singletonLock = 0;
     [fileManager release];
 }
 
+- (void) clearCachedFeeds
+{
+    [dataLock lock];
+    for( NSURL* url in [feeds allKeys] )
+        [self removeDataForFeed:url];
+    [dataLock unlock];
+}
+
 @end

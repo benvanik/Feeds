@@ -86,6 +86,11 @@
 - (void) removeAllFeeds;
 
 /**
+ * Clear cached data for all feeds. Does not remove metadata.
+ */
+- (void) clearCachedFeeds;
+
+/**
  * Get a list of metadata instances for all tracked feeds.
  * @return A list of FDFeedInfo instances.
  */
