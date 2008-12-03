@@ -85,6 +85,11 @@
             detectedType = [FDRSS2Parser class];
         }
     }
+    else if( [elementName isEqualToString:@"rdf:RDF"] == YES )
+    {
+        didDetectType = YES;
+        detectedType = [FDRSS2Parser class];
+    }
     else if( [elementName isEqualToString:@"feed"] == YES )
     {
         didDetectType = YES;

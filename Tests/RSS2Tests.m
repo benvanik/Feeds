@@ -15,6 +15,9 @@
     feedUrls = [[NSArray alloc] initWithObjects:
                 [NSURL URLWithString:@"http://www.rssboard.org/files/rss-2.0-sample.xml"],
                 [NSURL URLWithString:@"http://feeds.rssboard.org/rssboard"],
+                [NSURL URLWithString:@"http://cyber.law.harvard.edu/rss/examples/rss2sample.xml"],
+                //[NSURL URLWithString:@"http://rss.slashdot.org/Slashdot/slashdot"], // RSS 1.0 (RDF)
+                //[NSURL URLWithString:@"http://rss.slashdot.org/Slashdot/slashdot/to"], // RSS 0.9 (RDF)
                 nil];
 }
 

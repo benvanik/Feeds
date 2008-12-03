@@ -35,7 +35,8 @@
 
         // Sun, 29 Jan 2006 05:00:00 GMT
         dateFormatter = [[NSDateFormatter alloc] init];
-        [dateFormatter setDateFormat:@"%a, %d %b %Y %H:%M:%S %Z"];
+        [dateFormatter setFormatterBehavior:NSDateFormatterBehavior10_4];
+        [dateFormatter setDateFormat:@"EEE, d MMM yyyy H:m:s Z"];
     }
     return self;
 }
@@ -77,6 +78,19 @@
         return nil;
     }
     
+    [feed setCustomElements:customElements];
+    NSMutableArray* allCategories = [[NSMutableArray alloc] initWithArray:[categories allValues]];
+    // TODO: sort categories
+    [feed setCategories:allCategories];
+    // TODO: sort entries
+    [feed setEntries:entries];
+    [customElements release];
+    customElements = nil;
+    [categories release];
+    categories = nil;
+    [entries release];
+    entries = nil;
+    
     FDFeed* result = feed;
     feed = nil;
     return [result autorelease];
@@ -84,13 +98,29 @@
 
 - (void) parser:(NSXMLParser*)parser didStartElement:(NSString*)elementName namespaceURI:(NSString*)namespaceURI qualifiedName:(NSString*)qName attributes:(NSDictionary*)attributeDict
 {
-    if( [elementName isEqualToString:@"channel"] == YES )
+    elementName = [elementName lowercaseString];
+    
+    // RDF check
+    if( [elementName rangeOfString:@"rdf"].location == 0 )
+    {
+        isRDF = YES;
+    }
+    else if( [elementName isEqualToString:@"channel"] == YES )
     {
         state = FDRSS2InChannel;
         feed = [[FDFeed alloc] init];
         customElements = [[NSMutableArray alloc] init];
         categories = [[NSMutableDictionary alloc] init];
         entries = [[NSMutableArray alloc] init];
+    }
+    else if( ( isRDF == YES ) && ( [elementName isEqualToString:@"item"] == YES ) )
+    {
+        // For RDF
+        state = FDRSS2InItem;
+        entry = [[FDEntry alloc] init];
+        entryCategories = [[NSMutableArray alloc] init];
+        entryEnclosures = [[NSMutableArray alloc] init];
+        entryCustomElements = [[NSMutableArray alloc] init];
     }
     
     attributes = [attributeDict retain];
@@ -110,7 +140,7 @@
             entryEnclosures = [[NSMutableArray alloc] init];
             entryCustomElements = [[NSMutableArray alloc] init];
         }
-        else if( [elementName isEqualToString:@"textInput"] == YES )
+        else if( [elementName isEqualToString:@"textinput"] == YES )
         {
             state = FDRSS2InTextInput;
         }
@@ -132,24 +162,14 @@
 
 - (void) parser:(NSXMLParser*)parser didEndElement:(NSString*)elementName namespaceURI:(NSString*)namespaceURI qualifiedName:(NSString*)qName
 {
+    elementName = [elementName lowercaseString];
     NSString* fixedText = [text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     if( state == FDRSS2InChannel )
     {
         if( [elementName isEqualToString:@"channel"] == YES )
         {
-            [feed setCustomElements:customElements];
-            NSMutableArray* allCategories = [[NSMutableArray alloc] initWithArray:[categories allValues]];
-            // TODO: sort categories
-            [feed setCategories:allCategories];
-            // TODO: sort entries
-            [feed setEntries:entries];
-            [customElements release];
-            customElements = nil;
-            [categories release];
-            categories = nil;
-            [entries release];
-            entries = nil;
+            // Done! (unless RDF, when we aren't)
         }
         else if( [elementName isEqualToString:@"title"] == YES )
         {
@@ -163,7 +183,7 @@
         {
             [feed setLink:[NSURL URLWithString:fixedText]];
         }
-        else if( [elementName isEqualToString:@"pubDate"] == YES )
+        else if( [elementName isEqualToString:@"pubdate"] == YES )
         {
             [feed setPublicationDate:[dateFormatter dateFromString:fixedText]];
         }
@@ -232,6 +252,8 @@
             if( [fixedText length] > 0 )
             {
                 id isPermaLinkValue = [attributes objectForKey:@"isPermaLink"];
+                if( isPermaLinkValue == nil )
+                    isPermaLinkValue = [attributes objectForKey:@"ispermalink"];
                 BOOL isPermaLink = ( isPermaLinkValue == nil ) || ( [isPermaLinkValue boolValue] == YES );
                 if( isPermaLink == YES )
                     [entry setLink:[NSURL URLWithString:fixedText]];
@@ -250,7 +272,7 @@
         {
             [entry setLink:[NSURL URLWithString:fixedText]];
         }
-        else if( [elementName isEqualToString:@"pubDate"] == YES )
+        else if( [elementName isEqualToString:@"pubdate"] == YES )
         {
             [entry setPublicationDate:[dateFormatter dateFromString:fixedText]];
         }
@@ -321,7 +343,7 @@
     }
     else if( state == FDRSS2InTextInput )
     {
-        if( [elementName isEqualToString:@"textInput"] == YES )
+        if( [elementName isEqualToString:@"textinput"] == YES )
         {
             state = FDRSS2InChannel;
         }

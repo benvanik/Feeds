@@ -30,6 +30,7 @@ typedef NSInteger FDRSS2State;
     NSXMLParser*            xml;
     NSArray*                customNamepaces;
     FDRSS2State             state;
+    BOOL                    isRDF;
     
     FDFeed*                 feed;
     FDImage*                image;

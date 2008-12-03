@@ -50,8 +50,9 @@
 {
     data = [[NSMutableData alloc] init];
     
+    // NOTE: NSURLRequestReloadRevalidatingCacheData is probably a better choice but should be looked at in the case of the server not returning modification time or obeying IfModifiedSince
     NSURLRequest* request = [NSURLRequest requestWithURL:[feedInfo url]
-                                             cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                             cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
                                          timeoutInterval:60.0];
     [[NSURLConnection alloc] initWithRequest:request
                                     delegate:self];
