@@ -106,8 +106,10 @@ FD_SETTER( CustomElements,      customElements,     NSArray*            );
     if( [plist objectForKey:@"link"] != nil )
         [entry setLink:[NSURL URLWithString:[plist objectForKey:@"link"]]];
     [entry setPublicationDate:[plist objectForKey:@"publicationDate"]];
-    [entry setAuthor:[FDEmailAddress emailAddresWithContentsOfPropertyList:[plist objectForKey:@"author"]]];
-    [entry setSource:[FDTitledURL titledURLWithContentsOfPropertyList:[plist objectForKey:@"source"]]];
+    if( [plist objectForKey:@"author"] != nil )
+        [entry setAuthor:[FDEmailAddress emailAddresWithContentsOfPropertyList:[plist objectForKey:@"author"]]];
+    if( [plist objectForKey:@"source"] != nil )
+        [entry setSource:[FDTitledURL titledURLWithContentsOfPropertyList:[plist objectForKey:@"source"]]];
     NSArray* categoriesPlist = [plist objectForKey:@"categories"];
     if( categoriesPlist != nil )
     {

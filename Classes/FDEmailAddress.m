@@ -26,15 +26,10 @@
 {
     if( self = [super init] )
     {
-        if( ( _address == nil ) || ( [_address length] == 0 ) )
-        {
-#if defined( FD_EXCEPTIONS )
-            [NSException raise:NSInvalidArgumentException format:@"Address must not be nil or empty"];
-#endif
-            [self release];
-            return nil;
-        }
-        address = [_address retain];
+        if( ( _address != nil ) && ( [_address length] == 0 ) )
+             address = nil;
+        else
+             address = [_address retain];
         
         if( ( _name != nil ) && ( [_name length] == 0 ) )
             name = nil;
